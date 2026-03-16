@@ -10,13 +10,13 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    lng: "uz",
+    lng: localStorage.getItem("autodoc-language") || "ru",
     resources: {
       en: { translation: en },
       ru: { translation: ru },
       uz: { translation: uz },
     },
-    fallbackLng: "uz",
+    fallbackLng: "ru",
     interpolation: {
       escapeValue: false,
     },
