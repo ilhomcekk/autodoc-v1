@@ -96,7 +96,9 @@ export function Header() {
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-[72px]">
             {/* Logo */}
-            <img src={images.Logo} alt="" />
+            <Link to={"/"}>
+              <img src={images.Logo} alt="" />
+            </Link>
             {/* <Link
               to="/"
               className={`flex items-center gap-2 ${logoColor} transition-colors duration-300`}
