@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { motion, useInView } from "motion/react";
 import { ArrowRight, ArrowUpRight, Play } from "lucide-react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
+import images from "../../../assets/images";
 
 const HERO_IMG = "https://images.unsplash.com/photo-1747499967281-c0c5eec9933c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbWFydCUyMGNpdHklMjBhZXJpYWwlMjB2aWV3JTIwbmlnaHR8ZW58MXx8fHwxNzczMzgwMDY3fDA&ixlib=rb-4.1.0&q=80&w=1080";
 const SERVER_IMG = "https://images.unsplash.com/photo-1611582777035-1b4e4c77aa72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwaW5mcmFzdHJ1Y3R1cmUlMjBzZXJ2ZXIlMjByb29tJTIwZGFya3xlbnwxfHx8fDE3NzMzODAwNjV8MA&ixlib=rb-4.1.0&q=80&w=1080";
@@ -244,7 +245,8 @@ export function HomePage() {
             >
               <span className="text-[18px]">&times;</span>
             </button>
-            <div className="text-center">
+            <video src={images.AnonsVideo} controls></video>
+            {/* <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-4 rounded-full border border-white/10 flex items-center justify-center">
                 <Play size={28} className="text-white/30 ml-1" />
               </div>
@@ -252,7 +254,7 @@ export function HomePage() {
                 Видео будет добавлено
               </p>
               <p className="text-white/15 text-[11px] mt-2">Placeholder для корпоративного видео</p>
-            </div>
+            </div> */}
           </motion.div>
         </div>
       )}
