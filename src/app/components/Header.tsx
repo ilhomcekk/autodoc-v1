@@ -3,27 +3,30 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import images from "../../assets/images";
-
-const navItems = [
-  { label: "О холдинге", path: "/about" },
-  { label: "Проекты", path: "/projects" },
-  { label: "Карьера", path: "/career" },
-  { label: "Новости", path: "/news" },
-  { label: "Партнеры", path: "/partners" },
-  { label: "Контакты", path: "/contact" },
-];
+import { setLanguage } from "../../config/localStorage";
+import i18n from "i18next";
+import { useTranslation } from "react-i18next";
 
 const aboutSubmenu = [
   { label: "История", hash: "#history" },
   { label: "Руководство", hash: "#leadership" },
 ];
 
-const languages = ["RU", "UZ", "EN"];
+const languages = ["ru", "uz", "en"];
 
 export function Header() {
+  const { t } = useTranslation();
+
+  const navItems = [
+    { label: t("aboutHolding"), path: "/about" },
+    { label: t("projects"), path: "/projects" },
+    { label: "Карьера", path: "/career" },
+    { label: "Новости", path: "/news" },
+    { label: "Партнеры", path: "/partners" },
+    { label: "Контакты", path: "/contact" },
+  ];
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeLang, setActiveLang] = useState("RU");
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
   const aboutDropdownTimeout = useRef<ReturnType<typeof setTimeout> | null>(
     null,
@@ -255,18 +258,20 @@ export function Header() {
                 {languages.map((lang, i) => (
                   <button
                     key={lang}
-                    onClick={() => setActiveLang(lang)}
+                    onClick={() => {
+                      setLanguage(lang);
+                    }}
                     className={`text-[11px] tracking-[0.1em] px-2 py-1 transition-all duration-200 ${textColor} ${
-                      activeLang === lang
+                      i18n.language === lang
                         ? "opacity-100"
                         : "opacity-40 hover:opacity-70"
                     } ${i < languages.length - 1 ? `border-r ${scrolled || !isHome ? "border-black/10" : "border-white/20"}` : ""}`}
                     style={{
                       fontFamily: "Inter, sans-serif",
-                      fontWeight: activeLang === lang ? 600 : 400,
+                      fontWeight: i18n.language === lang ? 600 : 400,
                     }}
                   >
-                    {lang}
+                    {lang.toUpperCase()}
                   </button>
                 ))}
               </div>
@@ -325,18 +330,18 @@ export function Header() {
                 {languages.map((lang) => (
                   <button
                     key={lang}
-                    onClick={() => setActiveLang(lang)}
+                    onClick={() => setLanguage(lang)}
                     className={`text-[13px] tracking-[0.1em] transition-opacity ${
-                      activeLang === lang
+                      i18n.language === lang
                         ? "text-[#1a1a1a] opacity-100"
                         : "text-[#1a1a1a] opacity-40"
                     }`}
                     style={{
                       fontFamily: "Inter, sans-serif",
-                      fontWeight: activeLang === lang ? 600 : 400,
+                      fontWeight: i18n.language === lang ? 600 : 400,
                     }}
                   >
-                    {lang}
+                    {lang.toUpperCase()}
                   </button>
                 ))}
               </div>
