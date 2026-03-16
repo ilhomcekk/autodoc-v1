@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import images from "../../assets/images";
 
 const navItems = [
   { label: "О холдинге", path: "/about" },
@@ -24,7 +25,9 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeLang, setActiveLang] = useState("RU");
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
-  const aboutDropdownTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const aboutDropdownTimeout = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
   const location = useLocation();
   const navigate = useNavigate();
   const isHome = location.pathname === "/";
@@ -42,20 +45,26 @@ export function Header() {
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
 
   const openAboutDropdown = () => {
-    if (aboutDropdownTimeout.current) clearTimeout(aboutDropdownTimeout.current);
+    if (aboutDropdownTimeout.current)
+      clearTimeout(aboutDropdownTimeout.current);
     setAboutDropdownOpen(true);
   };
 
   const closeAboutDropdown = () => {
-    aboutDropdownTimeout.current = setTimeout(() => setAboutDropdownOpen(false), 150);
+    aboutDropdownTimeout.current = setTimeout(
+      () => setAboutDropdownOpen(false),
+      150,
+    );
   };
 
   const handleSubmenuClick = (hash: string) => {
@@ -68,9 +77,10 @@ export function Header() {
     }
   };
 
-  const headerBg = scrolled || !isHome
-    ? "bg-white/95 backdrop-blur-xl border-b border-black/[0.04] shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
-    : "bg-transparent";
+  const headerBg =
+    scrolled || !isHome
+      ? "bg-white/95 backdrop-blur-xl border-b border-black/[0.04] shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
+      : "bg-transparent";
 
   const textColor = scrolled || !isHome ? "text-[#1a1a1a]" : "text-white";
   const logoColor = scrolled || !isHome ? "text-[#1a1a1a]" : "text-white";
@@ -83,16 +93,35 @@ export function Header() {
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-[72px]">
             {/* Logo */}
-            <Link to="/" className={`flex items-center gap-2 ${logoColor} transition-colors duration-300`}>
+            <img src={images.Logo} alt="" />
+            {/* <Link
+              to="/"
+              className={`flex items-center gap-2 ${logoColor} transition-colors duration-300`}
+            >
               <div className="w-8 h-8 relative">
                 <div className="absolute inset-0 bg-[#1B5E20] rounded-[3px]" />
-                <span className="absolute inset-0 flex items-center justify-center text-white text-[11px] tracking-[0.08em]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800 }}>A</span>
+                <span
+                  className="absolute inset-0 flex items-center justify-center text-white text-[11px] tracking-[0.08em]"
+                  style={{ fontFamily: "Inter, sans-serif", fontWeight: 800 }}
+                >
+                  A
+                </span>
               </div>
               <div className="flex flex-col leading-none">
-                <span className="text-[15px] tracking-[0.2em] uppercase" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>AUTODOC</span>
-                <span className={`text-[8px] tracking-[0.35em] uppercase ${scrolled || !isHome ? 'text-[#666]' : 'text-white/60'} transition-colors`} style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}>HOLDING</span>
+                <span
+                  className="text-[15px] tracking-[0.2em] uppercase"
+                  style={{ fontFamily: "Inter, sans-serif", fontWeight: 700 }}
+                >
+                  AUTODOC
+                </span>
+                <span
+                  className={`text-[8px] tracking-[0.35em] uppercase ${scrolled || !isHome ? "text-[#666]" : "text-white/60"} transition-colors`}
+                  style={{ fontFamily: "Inter, sans-serif", fontWeight: 500 }}
+                >
+                  HOLDING
+                </span>
               </div>
-            </Link>
+            </Link> */}
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-1">
@@ -111,9 +140,14 @@ export function Header() {
                       <Link
                         to={item.path}
                         className={`relative px-4 py-2 text-[13px] tracking-[0.02em] transition-all duration-300 ${textColor} ${
-                          isActive ? "opacity-100" : "opacity-60 hover:opacity-100"
+                          isActive
+                            ? "opacity-100"
+                            : "opacity-60 hover:opacity-100"
                         } inline-flex items-center gap-1`}
-                        style={{ fontFamily: 'Inter, sans-serif', fontWeight: isActive ? 600 : 400 }}
+                        style={{
+                          fontFamily: "Inter, sans-serif",
+                          fontWeight: isActive ? 600 : 400,
+                        }}
                       >
                         {item.label}
                         <svg
@@ -123,13 +157,23 @@ export function Header() {
                           fill="none"
                           className={`transition-transform duration-200 ${aboutDropdownOpen ? "rotate-180" : ""}`}
                         >
-                          <path d="M2.5 4L5 6.5L7.5 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                          <path
+                            d="M2.5 4L5 6.5L7.5 4"
+                            stroke="currentColor"
+                            strokeWidth="1.2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
                         </svg>
                         {isActive && (
                           <motion.div
                             layoutId="nav-indicator"
                             className="absolute bottom-0 left-4 right-4 h-[1.5px] bg-[#2E7D32]"
-                            transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                            transition={{
+                              type: "spring",
+                              stiffness: 400,
+                              damping: 30,
+                            }}
                           />
                         )}
                       </Link>
@@ -160,7 +204,10 @@ export function Header() {
                                       ? "text-[#1a1a1a]/60 hover:text-[#2E7D32] hover:bg-[#f5f7f5]"
                                       : "text-white/50 hover:text-white hover:bg-white/[0.06]"
                                   }`}
-                                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+                                  style={{
+                                    fontFamily: "Inter, sans-serif",
+                                    fontWeight: 400,
+                                  }}
                                 >
                                   {sub.label}
                                 </button>
@@ -180,14 +227,21 @@ export function Header() {
                     className={`relative px-4 py-2 text-[13px] tracking-[0.02em] transition-all duration-300 ${textColor} ${
                       isActive ? "opacity-100" : "opacity-60 hover:opacity-100"
                     }`}
-                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: isActive ? 600 : 400 }}
+                    style={{
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: isActive ? 600 : 400,
+                    }}
                   >
                     {item.label}
                     {isActive && (
                       <motion.div
                         layoutId="nav-indicator"
                         className="absolute bottom-0 left-4 right-4 h-[1.5px] bg-[#2E7D32]"
-                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 30,
+                        }}
                       />
                     )}
                   </Link>
@@ -203,9 +257,14 @@ export function Header() {
                     key={lang}
                     onClick={() => setActiveLang(lang)}
                     className={`text-[11px] tracking-[0.1em] px-2 py-1 transition-all duration-200 ${textColor} ${
-                      activeLang === lang ? "opacity-100" : "opacity-40 hover:opacity-70"
-                    } ${i < languages.length - 1 ? `border-r ${scrolled || !isHome ? 'border-black/10' : 'border-white/20'}` : ''}`}
-                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: activeLang === lang ? 600 : 400 }}
+                      activeLang === lang
+                        ? "opacity-100"
+                        : "opacity-40 hover:opacity-70"
+                    } ${i < languages.length - 1 ? `border-r ${scrolled || !isHome ? "border-black/10" : "border-white/20"}` : ""}`}
+                    style={{
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: activeLang === lang ? 600 : 400,
+                    }}
                   >
                     {lang}
                   </button>
@@ -239,7 +298,7 @@ export function Header() {
                   <Link
                     to={item.path}
                     className="py-4 text-[18px] text-[#1a1a1a] border-b border-black/[0.06] tracking-[0.02em] transition-colors hover:text-[#2E7D32] block"
-                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+                    style={{ fontFamily: "Inter, sans-serif", fontWeight: 400 }}
                   >
                     {item.label}
                   </Link>
@@ -250,7 +309,10 @@ export function Header() {
                           key={sub.hash}
                           onClick={() => handleSubmenuClick(sub.hash)}
                           className="py-3 text-[15px] text-[#1a1a1a]/50 tracking-[0.02em] transition-colors hover:text-[#2E7D32] text-left"
-                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+                          style={{
+                            fontFamily: "Inter, sans-serif",
+                            fontWeight: 400,
+                          }}
                         >
                           {sub.label}
                         </button>
@@ -265,9 +327,14 @@ export function Header() {
                     key={lang}
                     onClick={() => setActiveLang(lang)}
                     className={`text-[13px] tracking-[0.1em] transition-opacity ${
-                      activeLang === lang ? "text-[#1a1a1a] opacity-100" : "text-[#1a1a1a] opacity-40"
+                      activeLang === lang
+                        ? "text-[#1a1a1a] opacity-100"
+                        : "text-[#1a1a1a] opacity-40"
                     }`}
-                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: activeLang === lang ? 600 : 400 }}
+                    style={{
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: activeLang === lang ? 600 : 400,
+                    }}
                   >
                     {lang}
                   </button>
