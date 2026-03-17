@@ -14,51 +14,6 @@ import { useTranslation } from "react-i18next";
 const BUILDING_IMG =
   "https://images.unsplash.com/photo-1765279077820-d3f4f2bcdca5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBidWlsZGluZyUyMGdsYXNzJTIwZmFjYWRlJTIwbW9kZXJufGVufDF8fHx8MTc3MzM4MDA3MXww&ixlib=rb-4.1.0&q=80&w=1080";
 
-const timelineYears = [
-  {
-    year: "2015",
-    title: "Основание компании",
-    desc: "Начало деятельности в сфере цифровых решений для государственного сектора Узбекистана",
-    detail:
-      "В 2015 году была основана компания, которая стала фундаментом будущего технологического холдинга. Первые проекты были направлены на автоматизацию внутренних процессов государственных ведомств.",
-  },
-  {
-    year: "2017",
-    title: "Первые государственные проекты",
-    desc: "Запуск первых масштабных проектов цифровизации государственных услуг",
-    detail:
-      "В 2017 году компания получила первые крупные государственные контракты. Были запущены системы электронного документооборота и автоматизации сервисов для населения.",
-  },
-  {
-    year: "2019",
-    title: "Расширение направлений",
-    desc: "Развитие направления интеллектуальных систем и аналитических платформ",
-    detail:
-      "Компания вышла на рынок интеллектуальных систем, запустив проекты по распознаванию документов и аналитике данных. Началось формирование технологического стека на основе ИИ.",
-  },
-  {
-    year: "2021",
-    title: "Стратегическое партнерство",
-    desc: "Формирование стратегических партнерств с ведущими государственными ведомствами",
-    detail:
-      "Были подписаны стратегические соглашения с ключевыми министерствами и ведомствами. Количество реализованных проектов превысило 30, а команда выросла в несколько раз.",
-  },
-  {
-    year: "2023",
-    title: "Формирование холдинга",
-    desc: "Объединение проектов и компаний в единую холдинговую структуру",
-    detail:
-      "Все направления деятельности были объединены в единую холдинговую структуру AUTODOC HOLDING. Это позволило обеспечить синергию между проектами и ресурсами.",
-  },
-  {
-    year: "2025",
-    title: "Новый этап развития",
-    desc: "Выход на новый уровень цифровой трансформации с внедрением ИИ-технологий",
-    detail:
-      "Холдинг вышел на новый этап, внедряя передовые ИИ-технологии во все ключевые проекты. Портфель проектов превысил 50+ решений для государственного и коммерческого секторов.",
-  },
-];
-
 const leadership = [
   {
     id: 1,
@@ -112,6 +67,44 @@ function AnimatedSection({
 
 export function AboutPage() {
   const { t } = useTranslation();
+  const timelineYears = [
+    {
+      year: "2022",
+      title: t("foundingCompany"),
+      desc: t("foundingCompanyDesc"),
+      detail: t("foundingCompanyDetail"),
+    },
+    {
+      year: "2022",
+      title: t("firstProject"),
+      desc: t("firstProjectDesc"),
+      detail: t("firstProjectDetail"),
+    },
+    {
+      year: "2023",
+      title: t("expensionDirections"),
+      desc: t("expensionDirectionsDesc"),
+      detail: t("expensionDirectionsDetail"),
+    },
+    {
+      year: "2023",
+      title: t("governmentPrivatePartnership"),
+      desc: t("governmentPrivatePartnershipDesc"),
+      detail: t("governmentPrivatePartnershipDetail"),
+    },
+    {
+      year: "2023",
+      title: t("infrastructureDevelopment"),
+      desc: t("infrastructureDevelopmentDesc"),
+      detail: t("infrastructureDevelopmentDetail"),
+    },
+    {
+      year: "2025",
+      title: t("formationHolding"),
+      desc: t("formationHoldingDesc"),
+      detail: t("formationHoldingDetail"),
+    },
+  ];
   const [selectedLeader, setSelectedLeader] = useState<
     (typeof leadership)[0] | null
   >(null);
@@ -313,9 +306,9 @@ export function AboutPage() {
             >
               <style>{`.overflow-x-auto::-webkit-scrollbar { display: none; }`}</style>
               <div className="flex gap-0 min-w-max pb-8 pt-4">
-                {timelineYears.map((item) => (
+                {timelineYears.map((item, index) => (
                   <button
-                    key={item.year}
+                    key={index}
                     className="relative group text-left"
                     style={{ width: "340px", flexShrink: 0 }}
                     onClick={() => setSelectedYear(item)}
@@ -379,7 +372,7 @@ export function AboutPage() {
                           className="mt-4 text-[11px] text-[#2E7D32] tracking-[0.08em] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                           style={{ fontWeight: 600 }}
                         >
-                          Подробнее →
+                          {t("moreDetails")} →
                         </div>
                       </div>
                     </div>
@@ -404,7 +397,7 @@ export function AboutPage() {
                       className="text-[12px] text-[#999] tracking-[0.1em] uppercase"
                       style={{ fontWeight: 500 }}
                     >
-                      Продолжение следует
+                      {t("toBeContuned")}
                     </span>
                   </div>
                 </div>
@@ -462,7 +455,7 @@ export function AboutPage() {
                   className="text-[11px] tracking-[0.3em] uppercase text-[#4CAF50]/60 block mb-3"
                   style={{ fontWeight: 600 }}
                 >
-                  История холдинга
+                  {t("historyHolding")}
                 </span>
                 <h3
                   className="text-white relative z-10"
@@ -507,12 +500,12 @@ export function AboutPage() {
                   </div>
                 </div>
 
-                <p
+                {/* <p
                   className="text-[12px] text-[#ccc] italic"
                   style={{ fontWeight: 400 }}
                 >
                   Детальная информация будет дополнена позднее
-                </p>
+                </p> */}
               </div>
             </motion.div>
           </div>

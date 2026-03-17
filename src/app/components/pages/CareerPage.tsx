@@ -1,27 +1,34 @@
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
-import { ArrowRight, Briefcase, Users, TrendingUp, Cpu, ChevronRight, MapPin, Send, X, CheckCircle } from "lucide-react";
+import {
+  ArrowRight,
+  Briefcase,
+  Users,
+  TrendingUp,
+  Cpu,
+  ChevronRight,
+  MapPin,
+  Send,
+  X,
+  CheckCircle,
+} from "lucide-react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
+import { useTranslation } from "react-i18next";
 
-const TEAM_IMG = "https://images.unsplash.com/photo-1758270705317-3ef6142d306f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNobm9sb2d5JTIwdGVhbSUyMGNvbGxhYm9yYXRpb24lMjBkaXZlcnNlfGVufDF8fHx8MTc3MzM4MDA2OXww&ixlib=rb-4.1.0&q=80&w=1080";
-const OFFICE_IMG = "https://images.unsplash.com/photo-1641998148499-cb6b55a3c0d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjB3b3Jrc3BhY2UlMjBwcmVtaXVtfGVufDF8fHx8MTc3MzM4MDA2Nnww&ixlib=rb-4.1.0&q=80&w=1080";
+const TEAM_IMG =
+  "https://images.unsplash.com/photo-1758270705317-3ef6142d306f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNobm9sb2d5JTIwdGVhbSUyMGNvbGxhYm9yYXRpb24lMjBkaXZlcnNlfGVufDF8fHx8MTc3MzM4MDA2OXww&ixlib=rb-4.1.0&q=80&w=1080";
+const OFFICE_IMG =
+  "https://images.unsplash.com/photo-1641998148499-cb6b55a3c0d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjB3b3Jrc3BhY2UlMjBwcmVtaXVtfGVufDF8fHx8MTc3MzM4MDA2Nnww&ixlib=rb-4.1.0&q=80&w=1080";
 
-const reasons = [
-  { icon: Briefcase, title: "Проекты национального масштаба", desc: "Мы создаём технологии, которые используются государственными сервисами и миллионами пользователей." },
-  { icon: Users, title: "Сильная команда", desc: "В компании работают специалисты в области IT, аналитики, проектного управления и цифровых сервисов." },
-  { icon: TrendingUp, title: "Рост и развитие", desc: "Сотрудники участвуют в сложных технологических проектах и получают уникальный опыт." },
-  { icon: Cpu, title: "Современная рабочая среда", desc: "Гибкие процессы, технологичная среда и культура профессионального роста." },
-];
-
-const vacancies = [
-  { id: 1, title: "Software Engineer", dept: "Разработка", location: "Ташкент", type: "Полная занятость", desc: "Разработка и поддержка высоконагруженных систем для государственных сервисов. Работа с современными технологиями: React, Node.js, PostgreSQL, Docker.", requirements: ["Опыт коммерческой разработки от 3 лет", "Знание JavaScript/TypeScript", "Опыт работы с реляционными БД", "Понимание принципов CI/CD"] },
-  { id: 2, title: "System Analyst", dept: "Аналитика", location: "Ташкент", type: "Полная занятость", desc: "Анализ бизнес-процессов, формирование требований и проектирование решений для цифровизации государственных услуг.", requirements: ["Опыт работы системным аналитиком от 2 лет", "Навыки работы с UML, BPMN", "Опыт составления ТЗ", "Аналитическое мышление"] },
-  { id: 3, title: "Project Manager", dept: "Управление проектами", location: "Ташкент", type: "Полная занятость", desc: "Управление IT-проектами в государственном секторе. Координация команд разработки, взаимодействие с заказчиками.", requirements: ["Опыт управления IT-проектами от 3 лет", "Знание Agile/Scrum методологий", "Навыки работы с Jira, Confluence", "Опыт работы с госсектором — преимущество"] },
-  { id: 4, title: "UX/UI Designer", dept: "Дизайн", location: "Ташкент", type: "Полная занятость", desc: "Проектирование пользовательских интерфейсов для государственных и коммерческих цифровых сервисов.", requirements: ["Опыт работы UX/UI дизайнером от 2 лет", "Владение Figma", "Понимание принципов UX-исследований", "Портфолио с примерами работ"] },
-  { id: 5, title: "DevOps Engineer", dept: "Инфраструктура", location: "Ташкент", type: "Полная занятость", desc: "Построение и поддержка инфраструктуры для высоконагруженных государственных сервисов.", requirements: ["Опыт работы DevOps от 2 лет", "Знание Linux, Docker, Kubernetes", "Опыт работы с CI/CD пайплайнами", "Навыки мониторинга и алертинга"] },
-];
-
-function AnimatedSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
+function AnimatedSection({
+  children,
+  className = "",
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
   return (
@@ -38,9 +45,111 @@ function AnimatedSection({ children, className = "", delay = 0 }: { children: Re
 }
 
 export function CareerPage() {
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", comment: "" });
+  const { t } = useTranslation();
+  const reasons = [
+    {
+      icon: Briefcase,
+      title: t("nationalScaleProjects"),
+      desc: t("nationalScaleProjectsDesc"),
+    },
+    {
+      icon: Users,
+      title: t("strongTeam"),
+      desc: t("strongTeamDesc"),
+    },
+    {
+      icon: TrendingUp,
+      title: t("growthAndDevelopment"),
+      desc: t("growthAndDevelopmentDesc"),
+    },
+    {
+      icon: Cpu,
+      title: t("modernWorkEnvironment"),
+      desc: t("modernWorkEnvironmentDesc"),
+    },
+  ];
+  const vacancies = [
+    {
+      id: 1,
+      title: "Software Engineer",
+      dept: t("development"),
+      location: "Ташкент",
+      type: "Полная занятость",
+      desc: "Разработка и поддержка высоконагруженных систем для государственных сервисов. Работа с современными технологиями: React, Node.js, PostgreSQL, Docker.",
+      requirements: [
+        "Опыт коммерческой разработки от 3 лет",
+        "Знание JavaScript/TypeScript",
+        "Опыт работы с реляционными БД",
+        "Понимание принципов CI/CD",
+      ],
+    },
+    {
+      id: 2,
+      title: "System Analyst",
+      dept: t("analytics"),
+      location: "Ташкент",
+      type: "Полная занятость",
+      desc: "Анализ бизнес-процессов, формирование требований и проектирование решений для цифровизации государственных услуг.",
+      requirements: [
+        "Опыт работы системным аналитиком от 2 лет",
+        "Навыки работы с UML, BPMN",
+        "Опыт составления ТЗ",
+        "Аналитическое мышление",
+      ],
+    },
+    {
+      id: 3,
+      title: "Project Manager",
+      dept: t("projectManagement"),
+      location: "Ташкент",
+      type: "Полная занятость",
+      desc: "Управление IT-проектами в государственном секторе. Координация команд разработки, взаимодействие с заказчиками.",
+      requirements: [
+        "Опыт управления IT-проектами от 3 лет",
+        "Знание Agile/Scrum методологий",
+        "Навыки работы с Jira, Confluence",
+        "Опыт работы с госсектором — преимущество",
+      ],
+    },
+    {
+      id: 4,
+      title: "UX/UI Designer",
+      dept: t("design"),
+      location: "Ташкент",
+      type: "Полная занятость",
+      desc: "Проектирование пользовательских интерфейсов для государственных и коммерческих цифровых сервисов.",
+      requirements: [
+        "Опыт работы UX/UI дизайнером от 2 лет",
+        "Владение Figma",
+        "Понимание принципов UX-исследований",
+        "Портфолио с примерами работ",
+      ],
+    },
+    {
+      id: 5,
+      title: "DevOps Engineer",
+      dept: t("infrastructure"),
+      location: "Ташкент",
+      type: "Полная занятость",
+      desc: "Построение и поддержка инфраструктуры для высоконагруженных государственных сервисов.",
+      requirements: [
+        "Опыт работы DevOps от 2 лет",
+        "Знание Linux, Docker, Kubernetes",
+        "Опыт работы с CI/CD пайплайнами",
+        "Навыки мониторинга и алертинга",
+      ],
+    },
+  ];
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    comment: "",
+  });
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [selectedVacancy, setSelectedVacancy] = useState<typeof vacancies[0] | null>(null);
+  const [selectedVacancy, setSelectedVacancy] = useState<
+    (typeof vacancies)[0] | null
+  >(null);
   const vacanciesRef = useRef<HTMLElement>(null);
 
   const scrollToVacancies = () => {
@@ -48,7 +157,9 @@ export function CareerPage() {
   };
 
   const scrollToForm = () => {
-    document.getElementById("resume-form")?.scrollIntoView({ behavior: "smooth" });
+    document
+      .getElementById("resume-form")
+      ?.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -79,25 +190,35 @@ export function CareerPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.2 }}
             >
-              <span className="text-[11px] tracking-[0.3em] uppercase text-[#4CAF50]/70 block mb-5" style={{ fontWeight: 600 }}>
-                Карьера
+              <span
+                className="text-[11px] tracking-[0.3em] uppercase text-[#4CAF50]/70 block mb-5"
+                style={{ fontWeight: 600 }}
+              >
+                {t("career")}
               </span>
               <h1
                 className="text-white mb-6"
                 style={{
                   fontFamily: "Inter, sans-serif",
-                  fontSize: 'clamp(32px, 5vw, 60px)',
+                  fontSize: "clamp(32px, 5vw, 60px)",
                   fontWeight: 800,
                   lineHeight: 1.05,
-                  letterSpacing: '-0.03em',
+                  letterSpacing: "-0.03em",
                 }}
               >
-                Карьера в
+                {t("career")}
                 <br />
                 AUTODOC HOLDING
               </h1>
-              <p className="text-white/40 max-w-[560px] mb-10" style={{ fontSize: 'clamp(14px, 1.2vw, 16px)', fontWeight: 300, lineHeight: 1.8 }}>
-                Мы создаём цифровую инфраструктуру, которая меняет государственные сервисы и процессы в Узбекистане. Присоединяйтесь к команде, которая работает над проектами национального масштаба.
+              <p
+                className="text-white/40 max-w-[560px] mb-10"
+                style={{
+                  fontSize: "clamp(14px, 1.2vw, 16px)",
+                  fontWeight: 300,
+                  lineHeight: 1.8,
+                }}
+              >
+                {t("careerDesc")}
               </p>
               <div className="flex flex-wrap gap-3">
                 <button
@@ -105,15 +226,18 @@ export function CareerPage() {
                   className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 bg-[#2E7D32] text-white text-[12px] sm:text-[13px] tracking-[0.08em] uppercase hover:bg-[#1B5E20] transition-all duration-500"
                   style={{ fontWeight: 600 }}
                 >
-                  Открытые вакансии
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  {t("openVacancies")}
+                  <ArrowRight
+                    size={16}
+                    className="group-hover:translate-x-1 transition-transform"
+                  />
                 </button>
                 <button
                   onClick={scrollToForm}
                   className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 bg-white/[0.06] backdrop-blur-sm border border-white/[0.12] text-white text-[12px] sm:text-[13px] tracking-[0.08em] uppercase hover:bg-white/[0.12] transition-all duration-500"
                   style={{ fontWeight: 500 }}
                 >
-                  Отправить резюме
+                  {t("sendResume")}
                 </button>
               </div>
             </motion.div>
@@ -125,20 +249,23 @@ export function CareerPage() {
       <section className="py-16 sm:py-24 lg:py-36 bg-white">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <AnimatedSection>
-            <span className="text-[11px] tracking-[0.3em] uppercase text-[#2E7D32] block mb-4" style={{ fontWeight: 600 }}>
-              Преимущества
+            <span
+              className="text-[11px] tracking-[0.3em] uppercase text-[#2E7D32] block mb-4"
+              style={{ fontWeight: 600 }}
+            >
+              {t("advantages")}
             </span>
             <h2
               className="text-[#1a1a1a] mb-12 sm:mb-16"
               style={{
                 fontFamily: "Inter, sans-serif",
-                fontSize: 'clamp(26px, 3.5vw, 40px)',
+                fontSize: "clamp(26px, 3.5vw, 40px)",
                 fontWeight: 700,
                 lineHeight: 1.15,
-                letterSpacing: '-0.02em',
+                letterSpacing: "-0.02em",
               }}
             >
-              Почему AUTODOC
+              {t("why")} AUTODOC
             </h2>
           </AnimatedSection>
 
@@ -153,10 +280,20 @@ export function CareerPage() {
                         <Icon size={20} className="text-[#2E7D32]" />
                       </div>
                       <div>
-                        <h3 className="text-[#1a1a1a] mb-3" style={{ fontSize: '17px', fontWeight: 600, lineHeight: 1.3 }}>
+                        <h3
+                          className="text-[#1a1a1a] mb-3"
+                          style={{
+                            fontSize: "17px",
+                            fontWeight: 600,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {reason.title}
                         </h3>
-                        <p className="text-[#777] text-[13px] sm:text-[14px] leading-[1.8]" style={{ fontWeight: 400 }}>
+                        <p
+                          className="text-[#777] text-[13px] sm:text-[14px] leading-[1.8]"
+                          style={{ fontWeight: 400 }}
+                        >
                           {reason.desc}
                         </p>
                       </div>
@@ -170,23 +307,29 @@ export function CareerPage() {
       </section>
 
       {/* ========== SECTION 3 — ВАКАНСИИ ========== */}
-      <section ref={vacanciesRef} className="py-16 sm:py-24 lg:py-36 bg-[#fafafa] border-y border-black/[0.04]">
+      <section
+        ref={vacanciesRef}
+        className="py-16 sm:py-24 lg:py-36 bg-[#fafafa] border-y border-black/[0.04]"
+      >
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <AnimatedSection>
-            <span className="text-[11px] tracking-[0.3em] uppercase text-[#2E7D32] block mb-4" style={{ fontWeight: 600 }}>
-              Вакансии
+            <span
+              className="text-[11px] tracking-[0.3em] uppercase text-[#2E7D32] block mb-4"
+              style={{ fontWeight: 600 }}
+            >
+              {t("vacancies")}
             </span>
             <h2
               className="text-[#1a1a1a] mb-10 sm:mb-12"
               style={{
                 fontFamily: "Inter, sans-serif",
-                fontSize: 'clamp(26px, 3.5vw, 40px)',
+                fontSize: "clamp(26px, 3.5vw, 40px)",
                 fontWeight: 700,
                 lineHeight: 1.15,
-                letterSpacing: '-0.02em',
+                letterSpacing: "-0.02em",
               }}
             >
-              Открытые позиции
+              {t("openPositions")}
             </h2>
           </AnimatedSection>
 
@@ -200,11 +343,18 @@ export function CareerPage() {
                   <div className="flex-1 min-w-0">
                     <h4
                       className="text-[#1a1a1a] mb-1 group-hover:text-[#2E7D32] transition-colors duration-300"
-                      style={{ fontSize: 'clamp(15px, 1.2vw, 17px)', fontWeight: 600, lineHeight: 1.3 }}
+                      style={{
+                        fontSize: "clamp(15px, 1.2vw, 17px)",
+                        fontWeight: 600,
+                        lineHeight: 1.3,
+                      }}
                     >
                       {vacancy.title}
                     </h4>
-                    <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-[12px] sm:text-[13px] text-[#999]" style={{ fontWeight: 400 }}>
+                    <div
+                      className="flex flex-wrap items-center gap-2 sm:gap-4 text-[12px] sm:text-[13px] text-[#999]"
+                      style={{ fontWeight: 400 }}
+                    >
                       <span>{vacancy.dept}</span>
                       <span className="hidden sm:inline">·</span>
                       <span className="flex items-center gap-1">
@@ -213,7 +363,10 @@ export function CareerPage() {
                       </span>
                     </div>
                   </div>
-                  <ChevronRight size={18} className="text-[#ccc] group-hover:text-[#2E7D32] group-hover:translate-x-1 transition-all duration-300 flex-shrink-0 ml-4" />
+                  <ChevronRight
+                    size={18}
+                    className="text-[#ccc] group-hover:text-[#2E7D32] group-hover:translate-x-1 transition-all duration-300 flex-shrink-0 ml-4"
+                  />
                 </button>
               </AnimatedSection>
             ))}
@@ -249,10 +402,16 @@ export function CareerPage() {
 
               <div className="p-8 sm:p-10 lg:p-12">
                 <div className="flex flex-wrap items-center gap-2 mb-4">
-                  <span className="text-[10px] tracking-[0.15em] uppercase text-[#2E7D32] px-2.5 py-1 bg-[#2E7D32]/[0.06]" style={{ fontWeight: 600 }}>
+                  <span
+                    className="text-[10px] tracking-[0.15em] uppercase text-[#2E7D32] px-2.5 py-1 bg-[#2E7D32]/[0.06]"
+                    style={{ fontWeight: 600 }}
+                  >
                     {selectedVacancy.dept}
                   </span>
-                  <span className="text-[10px] tracking-[0.15em] uppercase text-[#888] px-2.5 py-1 bg-[#f5f5f5]" style={{ fontWeight: 500 }}>
+                  <span
+                    className="text-[10px] tracking-[0.15em] uppercase text-[#888] px-2.5 py-1 bg-[#f5f5f5]"
+                    style={{ fontWeight: 500 }}
+                  >
                     {selectedVacancy.type}
                   </span>
                 </div>
@@ -261,32 +420,52 @@ export function CareerPage() {
                   className="text-[#1a1a1a] mb-2"
                   style={{
                     fontFamily: "Inter, sans-serif",
-                    fontSize: 'clamp(22px, 3vw, 28px)',
+                    fontSize: "clamp(22px, 3vw, 28px)",
                     fontWeight: 700,
                     lineHeight: 1.2,
-                    letterSpacing: '-0.01em',
+                    letterSpacing: "-0.01em",
                   }}
                 >
                   {selectedVacancy.title}
                 </h3>
 
-                <div className="flex items-center gap-2 text-[13px] text-[#999] mb-8" style={{ fontWeight: 400 }}>
+                <div
+                  className="flex items-center gap-2 text-[13px] text-[#999] mb-8"
+                  style={{ fontWeight: 400 }}
+                >
                   <MapPin size={14} className="text-[#2E7D32]" />
                   {selectedVacancy.location}
                 </div>
 
                 <div className="mb-8">
-                  <h4 className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-3" style={{ fontWeight: 600 }}>Описание</h4>
-                  <p className="text-[#555] text-[14px] leading-[1.8]" style={{ fontWeight: 400 }}>
+                  <h4
+                    className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-3"
+                    style={{ fontWeight: 600 }}
+                  >
+                    Описание
+                  </h4>
+                  <p
+                    className="text-[#555] text-[14px] leading-[1.8]"
+                    style={{ fontWeight: 400 }}
+                  >
                     {selectedVacancy.desc}
                   </p>
                 </div>
 
                 <div className="mb-8">
-                  <h4 className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-3" style={{ fontWeight: 600 }}>Требования</h4>
+                  <h4
+                    className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-3"
+                    style={{ fontWeight: 600 }}
+                  >
+                    Требования
+                  </h4>
                   <ul className="space-y-2">
                     {selectedVacancy.requirements.map((req, i) => (
-                      <li key={i} className="flex items-start gap-3 text-[14px] text-[#555] leading-[1.6]" style={{ fontWeight: 400 }}>
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 text-[14px] text-[#555] leading-[1.6]"
+                        style={{ fontWeight: 400 }}
+                      >
                         <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D32] mt-2 flex-shrink-0" />
                         {req}
                       </li>
@@ -317,23 +496,29 @@ export function CareerPage() {
           <AnimatedSection>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
               <div className="lg:col-span-5">
-                <span className="text-[11px] tracking-[0.3em] uppercase text-[#2E7D32] block mb-4" style={{ fontWeight: 600 }}>
-                  Наша команда
+                <span
+                  className="text-[11px] tracking-[0.3em] uppercase text-[#2E7D32] block mb-4"
+                  style={{ fontWeight: 600 }}
+                >
+                  {t("ourTeam")}
                 </span>
                 <h2
                   className="text-[#1a1a1a] mb-6"
                   style={{
                     fontFamily: "Inter, sans-serif",
-                    fontSize: 'clamp(26px, 3.5vw, 40px)',
+                    fontSize: "clamp(26px, 3.5vw, 40px)",
                     fontWeight: 700,
                     lineHeight: 1.15,
-                    letterSpacing: '-0.02em',
+                    letterSpacing: "-0.02em",
                   }}
                 >
-                  Команда AUTODOC
+                  {t("team")} AUTODOC
                 </h2>
-                <p className="text-[#777] text-[14px] sm:text-[15px] leading-[1.8]" style={{ fontWeight: 400 }}>
-                  Мы объединяем инженеров, аналитиков, архитекторов и специалистов по цифровым сервисам, которые работают над проектами национального уровня.
+                <p
+                  className="text-[#777] text-[14px] sm:text-[15px] leading-[1.8]"
+                  style={{ fontWeight: 400 }}
+                >
+                  {t("teamDesc")}
                 </p>
               </div>
               <div className="lg:col-span-7">
@@ -343,7 +528,10 @@ export function CareerPage() {
                     alt="AUTODOC Office"
                     className="w-full h-[280px] sm:h-[400px] lg:h-[480px] object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent lg:block hidden" style={{ width: '20%' }} />
+                  <div
+                    className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent lg:block hidden"
+                    style={{ width: "20%" }}
+                  />
                 </div>
               </div>
             </div>
@@ -353,34 +541,45 @@ export function CareerPage() {
 
       {/* ========== SECTION 5 — FINAL CTA ========== */}
       <section className="py-16 sm:py-24 lg:py-36 bg-[#0a0a0a] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
-          backgroundSize: '40px 40px',
-        }} />
+        <div
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
+            backgroundSize: "40px 40px",
+          }}
+        />
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12 text-center relative">
           <AnimatedSection>
             <h2
               className="text-white mb-6"
               style={{
                 fontFamily: "Inter, sans-serif",
-                fontSize: 'clamp(28px, 4vw, 48px)',
+                fontSize: "clamp(28px, 4vw, 48px)",
                 fontWeight: 700,
                 lineHeight: 1.15,
-                letterSpacing: '-0.02em',
+                letterSpacing: "-0.02em",
               }}
             >
-              Станьте частью команды
+              {t("becomePart")}
             </h2>
-            <p className="text-white/40 text-[14px] sm:text-[15px] max-w-[560px] mx-auto mb-10" style={{ fontWeight: 300, lineHeight: 1.8 }}>
-              Если вам интересно работать над технологическими проектами, которые меняют цифровую инфраструктуру страны — присоединяйтесь к AUTODOC.
+            <p
+              className="text-white/40 text-[14px] sm:text-[15px] max-w-[560px] mx-auto mb-10"
+              style={{ fontWeight: 300, lineHeight: 1.8 }}
+            >
+              {t("becomePartDesc")}
+              AUTODOC.
             </p>
             <button
               onClick={scrollToForm}
               className="group inline-flex items-center gap-3 px-8 sm:px-10 py-4 bg-[#2E7D32] text-white text-[13px] tracking-[0.08em] uppercase hover:bg-[#1B5E20] transition-all duration-500"
               style={{ fontWeight: 600 }}
             >
-              Отправить резюме
-              <Send size={14} className="group-hover:translate-x-1 transition-transform" />
+              {t("sendResume")}
+              <Send
+                size={14}
+                className="group-hover:translate-x-1 transition-transform"
+              />
             </button>
           </AnimatedSection>
         </div>
@@ -390,23 +589,29 @@ export function CareerPage() {
       <section id="resume-form" className="py-16 sm:py-24 lg:py-36 bg-white">
         <div className="max-w-[680px] mx-auto px-6 lg:px-12">
           <AnimatedSection>
-            <span className="text-[11px] tracking-[0.3em] uppercase text-[#2E7D32] block mb-4" style={{ fontWeight: 600 }}>
-              Отклик
+            <span
+              className="text-[11px] tracking-[0.3em] uppercase text-[#2E7D32] block mb-4"
+              style={{ fontWeight: 600 }}
+            >
+              {t("response")}
             </span>
             <h2
               className="text-[#1a1a1a] mb-4"
               style={{
                 fontFamily: "Inter, sans-serif",
-                fontSize: 'clamp(26px, 3.5vw, 38px)',
+                fontSize: "clamp(26px, 3.5vw, 38px)",
                 fontWeight: 700,
                 lineHeight: 1.15,
-                letterSpacing: '-0.02em',
+                letterSpacing: "-0.02em",
               }}
             >
-              Отправка резюме
+              {t("submitResume")}
             </h2>
-            <p className="text-[#999] text-[14px] mb-10 sm:mb-12" style={{ fontWeight: 400, lineHeight: 1.7 }}>
-              Заполните форму и мы свяжемся с вами
+            <p
+              className="text-[#999] text-[14px] mb-10 sm:mb-12"
+              style={{ fontWeight: 400, lineHeight: 1.7 }}
+            >
+              {t("contactYouShortly")}
             </p>
           </AnimatedSection>
 
@@ -420,63 +625,106 @@ export function CareerPage() {
                 <div className="w-16 h-16 mx-auto mb-6 bg-[#2E7D32]/10 flex items-center justify-center rounded-full">
                   <CheckCircle size={28} className="text-[#2E7D32]" />
                 </div>
-                <h3 className="text-[#1a1a1a] mb-2" style={{ fontSize: '20px', fontWeight: 700 }}>
-                  Резюме отправлено
+                <h3
+                  className="text-[#1a1a1a] mb-2"
+                  style={{ fontSize: "20px", fontWeight: 700 }}
+                >
+                  {t("submitResume")}
                 </h3>
-                <p className="text-[#999] text-[14px]" style={{ fontWeight: 400 }}>
-                  Мы свяжемся с вами в ближайшее время
+                <p
+                  className="text-[#999] text-[14px]"
+                  style={{ fontWeight: 400 }}
+                >
+                  {t("weContactYou")}
                 </p>
               </motion.div>
             ) : (
               <form className="space-y-5" onSubmit={handleSubmit}>
                 <div>
-                  <label className="text-[11px] tracking-[0.15em] uppercase text-[#999] block mb-2" style={{ fontWeight: 600 }}>Имя *</label>
+                  <label
+                    className="text-[11px] tracking-[0.15em] uppercase text-[#999] block mb-2"
+                    style={{ fontWeight: 600 }}
+                  >
+                    {t("name")} *
+                  </label>
                   <input
                     type="text"
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
                     className="w-full px-5 py-4 bg-[#fafafa] border border-black/[0.06] text-[#1a1a1a] text-[14px] focus:outline-none focus:border-[#2E7D32]/30 transition-colors"
-                    placeholder="Ваше полное имя"
+                    placeholder={t("yourName")}
                     required
                   />
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="text-[11px] tracking-[0.15em] uppercase text-[#999] block mb-2" style={{ fontWeight: 600 }}>Email</label>
+                    <label
+                      className="text-[11px] tracking-[0.15em] uppercase text-[#999] block mb-2"
+                      style={{ fontWeight: 600 }}
+                    >
+                      Email
+                    </label>
                     <input
                       type="email"
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
                       className="w-full px-5 py-4 bg-[#fafafa] border border-black/[0.06] text-[#1a1a1a] text-[14px] focus:outline-none focus:border-[#2E7D32]/30 transition-colors"
                       placeholder="email@example.com"
                     />
                   </div>
                   <div>
-                    <label className="text-[11px] tracking-[0.15em] uppercase text-[#999] block mb-2" style={{ fontWeight: 600 }}>Телефон</label>
+                    <label
+                      className="text-[11px] tracking-[0.15em] uppercase text-[#999] block mb-2"
+                      style={{ fontWeight: 600 }}
+                    >
+                      {t("phone")}
+                    </label>
                     <input
                       type="tel"
                       value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, phone: e.target.value })
+                      }
                       className="w-full px-5 py-4 bg-[#fafafa] border border-black/[0.06] text-[#1a1a1a] text-[14px] focus:outline-none focus:border-[#2E7D32]/30 transition-colors"
                       placeholder="+998 __ ___ __ __"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="text-[11px] tracking-[0.15em] uppercase text-[#999] block mb-2" style={{ fontWeight: 600 }}>CV *</label>
+                  <label
+                    className="text-[11px] tracking-[0.15em] uppercase text-[#999] block mb-2"
+                    style={{ fontWeight: 600 }}
+                  >
+                    CV *
+                  </label>
                   <div className="w-full px-5 py-8 bg-[#fafafa] border border-dashed border-black/[0.08] text-center cursor-pointer hover:bg-[#f5f7f5] hover:border-[#2E7D32]/20 transition-all duration-300">
-                    <span className="text-[13px] text-[#999]">Перетащите файл или нажмите для загрузки</span>
-                    <p className="text-[11px] text-[#ccc] mt-1">PDF, DOC — до 10 МБ</p>
+                    <span className="text-[13px] text-[#999]">
+                      {t("dragFile")}
+                    </span>
+                    <p className="text-[11px] text-[#ccc] mt-1">
+                      PDF, DOC — до 10 МБ
+                    </p>
                   </div>
                 </div>
                 <div>
-                  <label className="text-[11px] tracking-[0.15em] uppercase text-[#999] block mb-2" style={{ fontWeight: 600 }}>Комментарий</label>
+                  <label
+                    className="text-[11px] tracking-[0.15em] uppercase text-[#999] block mb-2"
+                    style={{ fontWeight: 600 }}
+                  >
+                    {t("comment")}
+                  </label>
                   <textarea
                     value={formData.comment}
-                    onChange={(e) => setFormData({ ...formData, comment: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, comment: e.target.value })
+                    }
                     rows={4}
                     className="w-full px-5 py-4 bg-[#fafafa] border border-black/[0.06] text-[#1a1a1a] text-[14px] focus:outline-none focus:border-[#2E7D32]/30 transition-colors resize-none"
-                    placeholder="Расскажите о себе..."
+                    placeholder={`${t("writeYourSelf")}...`}
                   />
                 </div>
                 <button
@@ -484,7 +732,7 @@ export function CareerPage() {
                   className="w-full py-4 bg-[#1a1a1a] text-white text-[13px] tracking-[0.08em] uppercase hover:bg-[#2E7D32] transition-colors duration-500"
                   style={{ fontWeight: 600 }}
                 >
-                  Отправить резюме
+                  {t("sendResume")}
                 </button>
               </form>
             )}

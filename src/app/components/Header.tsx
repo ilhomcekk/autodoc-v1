@@ -7,11 +7,6 @@ import { setLanguage } from "../../config/localStorage";
 import i18n from "i18next";
 import { useTranslation } from "react-i18next";
 
-const aboutSubmenu = [
-  { label: "История", hash: "#history" },
-  { label: "Руководство", hash: "#leadership" },
-];
-
 const languages = ["ru", "uz", "en"];
 
 export function Header() {
@@ -21,9 +16,13 @@ export function Header() {
     { label: t("aboutHolding"), path: "/about" },
     { label: t("projects"), path: "/projects" },
     { label: t("career"), path: "/career" },
-    { label: t("news"), path: "/news" },
+    // { label: t("news"), path: "/news" },
     { label: t("contacts"), path: "/contact" },
   ];
+  const aboutSubmenu = [
+  { label: t("history"), hash: "#history" },
+  { label: t("management"), hash: "#leadership" },
+];
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
