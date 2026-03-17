@@ -74,13 +74,13 @@ export function CareerPage() {
       title: "Software Engineer",
       dept: t("development"),
       location: "Ташкент",
-      type: "Полная занятость",
-      desc: "Разработка и поддержка высоконагруженных систем для государственных сервисов. Работа с современными технологиями: React, Node.js, PostgreSQL, Docker.",
+      type: t("fullEmployment"),
+      desc: t("softwareEngineerDesc"),
       requirements: [
-        "Опыт коммерческой разработки от 3 лет",
-        "Знание JavaScript/TypeScript",
-        "Опыт работы с реляционными БД",
-        "Понимание принципов CI/CD",
+        t("softwareEngineerList1"),
+        t("softwareEngineerList2"),
+        t("softwareEngineerList3"),
+        t("softwareEngineerList4"),
       ],
     },
     {
@@ -88,13 +88,13 @@ export function CareerPage() {
       title: "System Analyst",
       dept: t("analytics"),
       location: "Ташкент",
-      type: "Полная занятость",
-      desc: "Анализ бизнес-процессов, формирование требований и проектирование решений для цифровизации государственных услуг.",
+      type: t("fullEmployment"),
+      desc: t("systemAnalystDesc"),
       requirements: [
-        "Опыт работы системным аналитиком от 2 лет",
-        "Навыки работы с UML, BPMN",
-        "Опыт составления ТЗ",
-        "Аналитическое мышление",
+        t("systemAnalystList1"),
+        t("systemAnalystList2"),
+        t("systemAnalystList3"),
+        t("systemAnalystList4"),
       ],
     },
     {
@@ -102,13 +102,13 @@ export function CareerPage() {
       title: "Project Manager",
       dept: t("projectManagement"),
       location: "Ташкент",
-      type: "Полная занятость",
-      desc: "Управление IT-проектами в государственном секторе. Координация команд разработки, взаимодействие с заказчиками.",
+      type: t("fullEmployment"),
+      desc: t("projectManagerDesc"),
       requirements: [
-        "Опыт управления IT-проектами от 3 лет",
-        "Знание Agile/Scrum методологий",
-        "Навыки работы с Jira, Confluence",
-        "Опыт работы с госсектором — преимущество",
+        t("projectManagerList1"),
+        t("projectManagerList2"),
+        t("projectManagerList3"),
+        t("projectManagerList4"),
       ],
     },
     {
@@ -116,13 +116,13 @@ export function CareerPage() {
       title: "UX/UI Designer",
       dept: t("design"),
       location: "Ташкент",
-      type: "Полная занятость",
-      desc: "Проектирование пользовательских интерфейсов для государственных и коммерческих цифровых сервисов.",
+      type: t("fullEmployment"),
+      desc: t("designerDesc"),
       requirements: [
-        "Опыт работы UX/UI дизайнером от 2 лет",
-        "Владение Figma",
-        "Понимание принципов UX-исследований",
-        "Портфолио с примерами работ",
+        t("designerList1"),
+        t("designerList2"),
+        t("designerList3"),
+        t("designerList4"),
       ],
     },
     {
@@ -130,13 +130,13 @@ export function CareerPage() {
       title: "DevOps Engineer",
       dept: t("infrastructure"),
       location: "Ташкент",
-      type: "Полная занятость",
-      desc: "Построение и поддержка инфраструктуры для высоконагруженных государственных сервисов.",
+      type: t("fullEmployment"),
+      desc: t("devOpsDesc"),
       requirements: [
-        "Опыт работы DevOps от 2 лет",
-        "Знание Linux, Docker, Kubernetes",
-        "Опыт работы с CI/CD пайплайнами",
-        "Навыки мониторинга и алертинга",
+        t("devOpsList1"),
+        t("devOpsList2"),
+        t("devOpsList3"),
+        t("devOpsList4"),
       ],
     },
   ];
@@ -442,7 +442,7 @@ export function CareerPage() {
                     className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-3"
                     style={{ fontWeight: 600 }}
                   >
-                    Описание
+                    {t("description")}
                   </h4>
                   <p
                     className="text-[#555] text-[14px] leading-[1.8]"
@@ -457,7 +457,7 @@ export function CareerPage() {
                     className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-3"
                     style={{ fontWeight: 600 }}
                   >
-                    Требования
+                    {t("requirements")}
                   </h4>
                   <ul className="space-y-2">
                     {selectedVacancy.requirements.map((req, i) => (
@@ -481,7 +481,7 @@ export function CareerPage() {
                   className="w-full py-4 bg-[#2E7D32] text-white text-[13px] tracking-[0.08em] uppercase hover:bg-[#1B5E20] transition-colors duration-500 flex items-center justify-center gap-2"
                   style={{ fontWeight: 600 }}
                 >
-                  Откликнуться
+                  {t("reply")}
                   <Send size={14} />
                 </button>
               </div>

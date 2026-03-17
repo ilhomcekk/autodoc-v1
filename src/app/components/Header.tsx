@@ -17,6 +17,7 @@ export function Header() {
     { label: t("projects"), path: "/projects" },
     { label: t("career"), path: "/career" },
     // { label: t("news"), path: "/news" },
+    { label: t("partners"), path: "/partners" },
     { label: t("contacts"), path: "/contact" },
   ];
   const aboutSubmenu = [

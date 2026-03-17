@@ -4,6 +4,7 @@ import { motion, useInView } from "motion/react";
 import { X, ArrowUpRight, ExternalLink } from "lucide-react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { useTranslation } from "react-i18next";
+import images from "../../../assets/images";
 
 const SERVER_IMG =
   "https://images.unsplash.com/photo-1611582777035-1b4e4c77aa72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwaW5mcmFzdHJ1Y3R1cmUlMjBzZXJ2ZXIlMjByb29tJTIwZGFya3xlbnwxfHx8fDE3NzMzODAwNjV8MA&ixlib=rb-4.1.0&q=80&w=1080";
@@ -49,6 +50,7 @@ export function ProjectsPage() {
       task: t("transportRegistrationSystemTask"),
       solution: t("transportRegistrationSystemSolution"),
       result: t("transportRegistrationSystemResult"),
+      photo: images.RegisterTransport,
     },
     {
       id: 2,
@@ -58,6 +60,7 @@ export function ProjectsPage() {
       task: t("systemEDOTask"),
       solution: t("systemEDOSolution"),
       result: t("systemEDOResult"),
+      photo: images.ElectronCash,
     },
     {
       id: 3,
@@ -67,6 +70,7 @@ export function ProjectsPage() {
       task: t("registerIDCardsTask"),
       solution: t("registerIDCardsSolution"),
       result: t("registerIDCardsResult"),
+      photo: images.ID,
     },
     {
       id: 4,
@@ -76,6 +80,7 @@ export function ProjectsPage() {
       task: t("safeRoadTask"),
       solution: t("safeRoadSolution"),
       result: t("safeRoadResult"),
+      photo: images.SafeRoad,
     },
     {
       id: 5,
@@ -85,6 +90,7 @@ export function ProjectsPage() {
       task: t("recognitionSystemTask"),
       solution: t("recognitionSystemSolution"),
       result: t("recognitionSystemResult"),
+      photo: images.AutoInfo,
     },
     {
       id: 6,
@@ -94,6 +100,7 @@ export function ProjectsPage() {
       task: t("analyticsSystemTask"),
       solution: t("analyticsSystemSolution"),
       result: t("analyticsSystemResult"),
+      photo: images.DataAnalytics,
     },
     {
       id: 7,
@@ -103,6 +110,7 @@ export function ProjectsPage() {
       task: t("cashRegisterSystemTask"),
       solution: t("cashRegisterSystemSolution"),
       result: t("cashRegisterSystemResult"),
+      photo: images.ElectronCash,
     },
     {
       id: 8,
@@ -112,6 +120,7 @@ export function ProjectsPage() {
       task: t("serviceSystemTask"),
       solution: t("serviceSystemSolution"),
       result: t("serviceSystemResult"),
+      photo: images.Queue,
     },
     {
       id: 9,
@@ -121,12 +130,13 @@ export function ProjectsPage() {
       task: t("digitalServiceSystemTask"),
       solution: t("digitalServiceSystemSolution"),
       result: t("digitalServiceSystemResult"),
+      photo: images.Kassa,
     },
   ];
   const achievements = [
     { number: "99.2%", label: t("recognitionAccuracy") },
     { number: "10K+", label: t("documentsProcessedDaily") },
-    { number: "2M+", label: t("activeUsers") },
+    { number: "3M+", label: t("activeUsers") },
     { number: "50+", label: t("digitalCenters") },
   ];
   const [searchParams, setSearchParams] = useSearchParams();
@@ -225,7 +235,8 @@ export function ProjectsPage() {
                   {/* Project Image Placeholder */}
                   <div className="h-[200px] bg-gradient-to-br from-[#e8ece8] to-[#dde3dd] relative overflow-hidden">
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-12 h-12 border border-white/40 flex items-center justify-center">
+                      <img src={project.photo} alt="" />
+                      {/* <div className="w-12 h-12 border border-white/40 flex items-center justify-center">
                         <span
                           className="text-white/60 text-[18px]"
                           style={{
@@ -235,7 +246,7 @@ export function ProjectsPage() {
                         >
                           {String(project.id).padStart(2, "0")}
                         </span>
-                      </div>
+                      </div> */}
                     </div>
                     <div className="absolute inset-0 bg-[#1B5E20]/0 group-hover:bg-[#1B5E20]/10 transition-colors duration-500" />
                     <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -452,7 +463,8 @@ export function ProjectsPage() {
 
               {/* Photo placeholder */}
               <div className="mt-10 h-[200px] bg-[#f5f5f5] border border-dashed border-black/[0.08] flex items-center justify-center">
-                <div className="text-center">
+              <img src={selectedProject.photo} className="h-full w-full object-cover" alt="" />
+                {/* <div className="text-center">
                   <ExternalLink
                     size={20}
                     className="text-[#ccc] mx-auto mb-2"
@@ -463,7 +475,7 @@ export function ProjectsPage() {
                   >
                     Скриншоты проекта
                   </span>
-                </div>
+                </div> */}
               </div>
             </div>
           </motion.div>

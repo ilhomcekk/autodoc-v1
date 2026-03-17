@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { ArrowUpRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import images from "../../assets/images";
 
 export function Footer() {
   const { t } = useTranslation();
@@ -8,7 +9,7 @@ export function Footer() {
     { label: t("aboutHolding"), path: "/about" },
     { label: t("projects"), path: "/projects" },
     { label: t("career"), path: "/career" },
-    { label: t("news"), path: "/news" },
+    // { label: t("news"), path: "/news" },
     { label: t("partners"), path: "/partners" },
     { label: t("contacts"), path: "/contact" },
   ];
@@ -22,7 +23,10 @@ export function Footer() {
         <div className="py-16 lg:py-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
           {/* Logo + Description */}
           <div className="lg:col-span-4">
-            <Link to="/" className="flex items-center gap-2 mb-6">
+            <Link to={"/"}>
+              <img src={images.Logo} className="mb-2" alt="" />
+            </Link>
+            {/* <Link to="/" className="flex items-center gap-2 mb-6">
               <div className="w-8 h-8 relative">
                 <div className="absolute inset-0 bg-[#2E7D32] rounded-[3px]" />
                 <span
@@ -46,7 +50,7 @@ export function Footer() {
                   HOLDING
                 </span>
               </div>
-            </Link>
+            </Link> */}
             <p
               className="text-white/40 text-[13px] leading-[1.8] max-w-[320px]"
               style={{ fontFamily: "Inter, sans-serif" }}

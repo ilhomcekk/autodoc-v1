@@ -1,9 +1,81 @@
 import Logo from "./Autodoc grey2.svg";
-import AnonsVideo from './anons.mp4';
+import AnonsVideo from "./anons.mp4";
+// partners start
+import PoytaxtBank from "./partners/PoytaxtBank.png";
+import AloqaBank from "./partners/Aloqabank.png";
+import KapitalSugurta from "./partners/KapitalSugurta.png";
+import MikrokreditBank from "./partners/Mikrokreditbank.png";
+import UniversalBank from "./partners/Universalbank.png";
+import Beeline from "./partners/Beeline.png";
+import Abozor from "./partners/Abozor.png";
+import OrientFinansBank from "./partners/OrientFinansbank.png";
+import kapitalBank from "./partners/Kapitalbank.png";
+import Uztelecom from "./partners/Uztelecom.png";
+import XalqBank from "./partners/Xalqbanki.png";
+import SmartBank from "./partners/Smartbank.png";
+import HamkorBank from "./partners/Hamkorbank.png";
+import AgroBank from "./partners/Agrobank.png";
+import MinistryTourism from "./partners/MinistryTourism.png";
+import AgencyCivil from "./partners/AgencyCivil.png";
+import SupremeAssembly from "./partners/SupremeAssembly.png";
+import CityAdministration from "./partners/CityAdministration.png";
+import NationalCentral from "./partners/NationalCentral.png";
+import MinistryInternal from "./partners/MinistryInternal.png";
+import CabinetMinisters from "./partners/CabinetMinisters.png";
+import ProsecutorGeneral from "./partners/ProsecutorGeneral.png";
+import MinistryTransport from "./partners/MinistryTransport.png";
+import MinistryDigital from "./partners/MinistryDigital.png";
+import RoadTraffic from "./partners/roadTraffic.png";
+import MinistryHealth from "./partners/MinistryHealth.png";
+// partners end
+// projests start
+import AutoInfo from "./projects/autoInfo.jpeg";
+import DataAnalytics from "./projects/dataAnalytics.jpeg";
+import ElectronCash from "./projects/electronCash.jpg";
+import ID from "./projects/ID.jpg";
+import Queue from "./projects/queue.jpg";
+import RegisterTransport from "./projects/registerTransport.jpg";
+import SafeRoad from "./projects/safeRoad.jpg";
+import Kassa from "./projects/kassa.jpg";
+// projests end
 
 const images = {
   Logo,
-  AnonsVideo
+  AnonsVideo,
+  PoytaxtBank,
+  AloqaBank,
+  KapitalSugurta,
+  MikrokreditBank,
+  UniversalBank,
+  Beeline,
+  Abozor,
+  OrientFinansBank,
+  kapitalBank,
+  Uztelecom,
+  XalqBank,
+  SmartBank,
+  HamkorBank,
+  AgroBank,
+  MinistryTourism,
+  AgencyCivil,
+  SupremeAssembly,
+  CityAdministration,
+  NationalCentral,
+  MinistryInternal,
+  CabinetMinisters,
+  ProsecutorGeneral,
+  MinistryTransport,
+  MinistryDigital,
+  RoadTraffic,
+  MinistryHealth,
+  AutoInfo,
+  DataAnalytics,
+  ElectronCash,
+  ID,
+  Queue,
+  RegisterTransport,
+  SafeRoad,
+  Kassa
 };
 
 export default images;

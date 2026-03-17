@@ -14,33 +14,6 @@ import { useTranslation } from "react-i18next";
 const BUILDING_IMG =
   "https://images.unsplash.com/photo-1765279077820-d3f4f2bcdca5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBidWlsZGluZyUyMGdsYXNzJTIwZmFjYWRlJTIwbW9kZXJufGVufDF8fHx8MTc3MzM4MDA3MXww&ixlib=rb-4.1.0&q=80&w=1080";
 
-const leadership = [
-  {
-    id: 1,
-    name: "Имя Фамилия",
-    position: "Генеральный директор",
-    bio: "Опыт управления крупными технологическими проектами в государственном секторе. Руководит стратегическим развитием холдинга и координирует работу всех направлений.",
-  },
-  {
-    id: 2,
-    name: "Имя Фамилия",
-    position: "Операционный директор",
-    bio: "Отвечает за операционную деятельность холдинга, управление проектами и взаимодействие с ключевыми партнерами. Обеспечивает эффективность всех бизнес-процессов.",
-  },
-  {
-    id: 3,
-    name: "Имя Фамилия",
-    position: "Технический директор",
-    bio: "Руководит технологическим развитием холдинга, определяет архитектуру решений и внедрение инновационных технологий. Курирует все технические команды.",
-  },
-  {
-    id: 4,
-    name: "Имя Фамилия",
-    position: "Финансовый директор",
-    bio: "Управляет финансовой стратегией холдинга, инвестиционными процессами и экономической эффективностью проектов. Обеспечивает финансовую устойчивость компании.",
-  },
-];
-
 function AnimatedSection({
   children,
   className = "",
@@ -105,6 +78,32 @@ export function AboutPage() {
       detail: t("formationHoldingDetail"),
     },
   ];
+  const leadership = [
+  {
+    id: 1,
+    name: "Faxriddinov S. Sh",
+    position: "Председатель холдинга",
+    bio: "Опыт управления крупными технологическими проектами в государственном секторе. Руководит стратегическим развитием холдинга и координирует работу всех направлений.",
+  },
+  {
+    id: 2,
+    name: "Inogamov Sherzod",
+    position: "Директор по стратегии",
+    bio: "Отвечает за операционную деятельность холдинга, управление проектами и взаимодействие с ключевыми партнерами. Обеспечивает эффективность всех бизнес-процессов.",
+  },
+  {
+    id: 3,
+    name: "Umarov Murod",
+    position: "Директор по инвестициям",
+    bio: "Руководит технологическим развитием холдинга, определяет архитектуру решений и внедрение инновационных технологий. Курирует все технические команды.",
+  },
+  {
+    id: 4,
+    name: "Karimov Shamsiddin",
+    position: "Директор по информационным технологиям",
+    bio: "Управляет финансовой стратегией холдинга, инвестиционными процессами и экономической эффективностью проектов. Обеспечивает финансовую устойчивость компании.",
+  },
+];
   const [selectedLeader, setSelectedLeader] = useState<
     (typeof leadership)[0] | null
   >(null);
@@ -550,7 +549,7 @@ export function AboutPage() {
               <AnimatedSection key={person.id} delay={i * 0.1}>
                 <div
                   className="group cursor-pointer"
-                  onClick={() => setSelectedLeader(person)}
+                  // onClick={() => setSelectedLeader(person)}
                 >
                   {/* Photo Placeholder */}
                   <div className="aspect-[3/4] bg-gradient-to-b from-[#e8ece8] to-[#dde3dd] mb-5 overflow-hidden relative">
@@ -599,7 +598,7 @@ export function AboutPage() {
                     className="mt-3 flex items-center gap-1 text-[11px] text-[#2E7D32] tracking-[0.08em] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{ fontWeight: 500 }}
                   >
-                    Биография →
+                    {t("biography")} →
                   </div>
                 </div>
               </AnimatedSection>
