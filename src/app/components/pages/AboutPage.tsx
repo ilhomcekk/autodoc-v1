@@ -1,28 +1,100 @@
 import { useRef, useState, useEffect } from "react";
 import { useLocation } from "react-router";
 import { motion, useInView, AnimatePresence } from "motion/react";
-import { X, ChevronLeft, ChevronRight, User, GripHorizontal } from "lucide-react";
+import {
+  X,
+  ChevronLeft,
+  ChevronRight,
+  User,
+  GripHorizontal,
+} from "lucide-react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
+import { useTranslation } from "react-i18next";
 
-const BUILDING_IMG = "https://images.unsplash.com/photo-1765279077820-d3f4f2bcdca5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBidWlsZGluZyUyMGdsYXNzJTIwZmFjYWRlJTIwbW9kZXJufGVufDF8fHx8MTc3MzM4MDA3MXww&ixlib=rb-4.1.0&q=80&w=1080";
+const BUILDING_IMG =
+  "https://images.unsplash.com/photo-1765279077820-d3f4f2bcdca5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBidWlsZGluZyUyMGdsYXNzJTIwZmFjYWRlJTIwbW9kZXJufGVufDF8fHx8MTc3MzM4MDA3MXww&ixlib=rb-4.1.0&q=80&w=1080";
 
 const timelineYears = [
-  { year: "2015", title: "Основание компании", desc: "Начало деятельности в сфере цифровых решений для государственного сектора Узбекистана", detail: "В 2015 году была основана компания, которая стала фундаментом будущего технологического холдинга. Первые проекты были направлены на автоматизацию внутренних процессов государственных ведомств." },
-  { year: "2017", title: "Первые государственные проекты", desc: "Запуск первых масштабных проектов цифровизации государственных услуг", detail: "В 2017 году компания получила первые крупные государственные контракты. Были запущены системы электронного документооборота и автоматизации сервисов для населения." },
-  { year: "2019", title: "Расширение направлений", desc: "Развитие направления интеллектуальных систем и аналитических платформ", detail: "Компания вышла на рынок интеллектуальных систем, запустив проекты по распознаванию документов и аналитике данных. Началось формирование технологического стека на основе ИИ." },
-  { year: "2021", title: "Стратегическое партнерство", desc: "Формирование стратегических партнерств с ведущими государственными ведомствами", detail: "Были подписаны стратегические соглашения с ключевыми министерствами и ведомствами. Количество реализованных проектов превысило 30, а команда выросла в несколько раз." },
-  { year: "2023", title: "Формирование холдинга", desc: "Объединение проектов и компаний в единую холдинговую структуру", detail: "Все направления деятельности были объединены в единую холдинговую структуру AUTODOC HOLDING. Это позволило обеспечить синергию между проектами и ресурсами." },
-  { year: "2025", title: "Новый этап развития", desc: "Выход на новый уровень цифровой трансформации с внедрением ИИ-технологий", detail: "Холдинг вышел на новый этап, внедряя передовые ИИ-технологии во все ключевые проекты. Портфель проектов превысил 50+ решений для государственного и коммерческого секторов." },
+  {
+    year: "2015",
+    title: "Основание компании",
+    desc: "Начало деятельности в сфере цифровых решений для государственного сектора Узбекистана",
+    detail:
+      "В 2015 году была основана компания, которая стала фундаментом будущего технологического холдинга. Первые проекты были направлены на автоматизацию внутренних процессов государственных ведомств.",
+  },
+  {
+    year: "2017",
+    title: "Первые государственные проекты",
+    desc: "Запуск первых масштабных проектов цифровизации государственных услуг",
+    detail:
+      "В 2017 году компания получила первые крупные государственные контракты. Были запущены системы электронного документооборота и автоматизации сервисов для населения.",
+  },
+  {
+    year: "2019",
+    title: "Расширение направлений",
+    desc: "Развитие направления интеллектуальных систем и аналитических платформ",
+    detail:
+      "Компания вышла на рынок интеллектуальных систем, запустив проекты по распознаванию документов и аналитике данных. Началось формирование технологического стека на основе ИИ.",
+  },
+  {
+    year: "2021",
+    title: "Стратегическое партнерство",
+    desc: "Формирование стратегических партнерств с ведущими государственными ведомствами",
+    detail:
+      "Были подписаны стратегические соглашения с ключевыми министерствами и ведомствами. Количество реализованных проектов превысило 30, а команда выросла в несколько раз.",
+  },
+  {
+    year: "2023",
+    title: "Формирование холдинга",
+    desc: "Объединение проектов и компаний в единую холдинговую структуру",
+    detail:
+      "Все направления деятельности были объединены в единую холдинговую структуру AUTODOC HOLDING. Это позволило обеспечить синергию между проектами и ресурсами.",
+  },
+  {
+    year: "2025",
+    title: "Новый этап развития",
+    desc: "Выход на новый уровень цифровой трансформации с внедрением ИИ-технологий",
+    detail:
+      "Холдинг вышел на новый этап, внедряя передовые ИИ-технологии во все ключевые проекты. Портфель проектов превысил 50+ решений для государственного и коммерческого секторов.",
+  },
 ];
 
 const leadership = [
-  { id: 1, name: "Имя Фамилия", position: "Генеральный директор", bio: "Опыт управления крупными технологическими проектами в государственном секторе. Руководит стратегическим развитием холдинга и координирует работу всех направлений." },
-  { id: 2, name: "Имя Фамилия", position: "Операционный директор", bio: "Отвечает за операционную деятельность холдинга, управление проектами и взаимодействие с ключевыми партнерами. Обеспечивает эффективность всех бизнес-процессов." },
-  { id: 3, name: "Имя Фамилия", position: "Технический директор", bio: "Руководит технологическим развитием холдинга, определяет архитектуру решений и внедрение инновационных технологий. Курирует все технические команды." },
-  { id: 4, name: "Имя Фамилия", position: "Финансовый директор", bio: "Управляет финансовой стратегией холдинга, инвестиционными процессами и экономической эффективностью проектов. Обеспечивает финансовую устойчивость компании." },
+  {
+    id: 1,
+    name: "Имя Фамилия",
+    position: "Генеральный директор",
+    bio: "Опыт управления крупными технологическими проектами в государственном секторе. Руководит стратегическим развитием холдинга и координирует работу всех направлений.",
+  },
+  {
+    id: 2,
+    name: "Имя Фамилия",
+    position: "Операционный директор",
+    bio: "Отвечает за операционную деятельность холдинга, управление проектами и взаимодействие с ключевыми партнерами. Обеспечивает эффективность всех бизнес-процессов.",
+  },
+  {
+    id: 3,
+    name: "Имя Фамилия",
+    position: "Технический директор",
+    bio: "Руководит технологическим развитием холдинга, определяет архитектуру решений и внедрение инновационных технологий. Курирует все технические команды.",
+  },
+  {
+    id: 4,
+    name: "Имя Фамилия",
+    position: "Финансовый директор",
+    bio: "Управляет финансовой стратегией холдинга, инвестиционными процессами и экономической эффективностью проектов. Обеспечивает финансовую устойчивость компании.",
+  },
 ];
 
-function AnimatedSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
+function AnimatedSection({
+  children,
+  className = "",
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
   return (
@@ -39,8 +111,13 @@ function AnimatedSection({ children, className = "", delay = 0 }: { children: Re
 }
 
 export function AboutPage() {
-  const [selectedLeader, setSelectedLeader] = useState<typeof leadership[0] | null>(null);
-  const [selectedYear, setSelectedYear] = useState<typeof timelineYears[0] | null>(null);
+  const { t } = useTranslation();
+  const [selectedLeader, setSelectedLeader] = useState<
+    (typeof leadership)[0] | null
+  >(null);
+  const [selectedYear, setSelectedYear] = useState<
+    (typeof timelineYears)[0] | null
+  >(null);
   const timelineRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
@@ -86,30 +163,33 @@ export function AboutPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.2 }}
             >
-              <span className="text-[11px] tracking-[0.3em] uppercase text-[#4CAF50]/70 block mb-5" style={{ fontWeight: 600 }}>
-                О компании
+              <span
+                className="text-[11px] tracking-[0.3em] uppercase text-[#4CAF50]/70 block mb-5"
+                style={{ fontWeight: 600 }}
+              >
+                {t("aboutCompany")}
               </span>
               <h1
                 className="text-white mb-6"
                 style={{
                   fontFamily: "Inter, sans-serif",
-                  fontSize: 'clamp(32px, 5vw, 60px)',
+                  fontSize: "clamp(32px, 5vw, 60px)",
                   fontWeight: 800,
                   lineHeight: 1.05,
-                  letterSpacing: '-0.03em',
+                  letterSpacing: "-0.03em",
                 }}
               >
-                О холдинге
+                {t("aboutHolding")}
               </h1>
               <p
                 className="text-white/40 max-w-[560px]"
                 style={{
-                  fontSize: 'clamp(14px, 1.2vw, 17px)',
+                  fontSize: "clamp(14px, 1.2vw, 17px)",
                   fontWeight: 300,
                   lineHeight: 1.8,
                 }}
               >
-                AUTODOC HOLDING — технологическая группа компаний, создающая цифровую инфраструктуру для государственного и коммерческого секторов Узбекистана. Наша миссия — сделать государственные и коммерческие услуги быстрыми, прозрачными и доступными.
+                AUTODOC HOLDING — {t("aboutHoldingDesc")}
               </p>
             </motion.div>
           </div>
@@ -123,7 +203,12 @@ export function AboutPage() {
             <div className="py-12 sm:py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
               <div className="lg:col-span-1">
                 <div className="w-10 h-10 flex items-center justify-center border border-[#2E7D32]/20">
-                  <span className="text-[#2E7D32] text-[20px]" style={{ fontFamily: "Inter, sans-serif", fontWeight: 500 }}>"</span>
+                  <span
+                    className="text-[#2E7D32] text-[20px]"
+                    style={{ fontFamily: "Inter, sans-serif", fontWeight: 500 }}
+                  >
+                    "
+                  </span>
                 </div>
               </div>
               <div className="lg:col-span-9">
@@ -131,13 +216,13 @@ export function AboutPage() {
                   className="text-[#1a1a1a]/80"
                   style={{
                     fontFamily: "Inter, sans-serif",
-                    fontSize: 'clamp(18px, 2.2vw, 26px)',
+                    fontSize: "clamp(18px, 2.2vw, 26px)",
                     fontWeight: 400,
                     lineHeight: 1.5,
-                    fontStyle: 'italic',
+                    fontStyle: "italic",
                   }}
                 >
-                  Мы верим, что технологии должны служить людям. Каждый наш проект направлен на то, чтобы сделать взаимодействие граждан с государством проще, быстрее и удобнее.
+                  {t("weBelieve")}
                 </blockquote>
               </div>
             </div>
@@ -146,25 +231,31 @@ export function AboutPage() {
       </section>
 
       {/* ========== SECTION 2 — ИСТОРИЯ ========== */}
-      <section id="history" className="py-16 sm:py-24 lg:py-40 bg-white overflow-hidden">
+      <section
+        id="history"
+        className="py-16 sm:py-24 lg:py-40 bg-white overflow-hidden"
+      >
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <AnimatedSection>
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-4">
               <div>
-                <span className="text-[11px] tracking-[0.3em] uppercase text-[#2E7D32] block mb-4" style={{ fontWeight: 600 }}>
-                  История
+                <span
+                  className="text-[11px] tracking-[0.3em] uppercase text-[#2E7D32] block mb-4"
+                  style={{ fontWeight: 600 }}
+                >
+                  {t("history")}
                 </span>
                 <h2
                   className="text-[#1a1a1a]"
                   style={{
                     fontFamily: "Inter, sans-serif",
-                    fontSize: 'clamp(26px, 3.5vw, 44px)',
+                    fontSize: "clamp(26px, 3.5vw, 44px)",
                     fontWeight: 700,
                     lineHeight: 1.15,
-                    letterSpacing: '-0.02em',
+                    letterSpacing: "-0.02em",
                   }}
                 >
-                  История холдинга
+                  {t("historyHolding")}
                 </h2>
               </div>
 
@@ -172,7 +263,12 @@ export function AboutPage() {
               <div className="hidden md:flex items-center gap-2">
                 <div className="flex items-center gap-1.5 mr-4 text-[#999]">
                   <GripHorizontal size={14} />
-                  <span className="text-[11px] tracking-[0.1em] uppercase" style={{ fontWeight: 500 }}>Прокрутите</span>
+                  <span
+                    className="text-[11px] tracking-[0.1em] uppercase"
+                    style={{ fontWeight: 500 }}
+                  >
+                    {t("scroll")}
+                  </span>
                 </div>
                 <button
                   onClick={() => scrollTimeline("left")}
@@ -191,8 +287,11 @@ export function AboutPage() {
           </AnimatedSection>
 
           <AnimatedSection delay={0.15}>
-            <p className="text-[#999] text-[13px] mb-12 tracking-[0.02em]" style={{ fontWeight: 400 }}>
-              Нажмите на год, чтобы узнать подробнее
+            <p
+              className="text-[#999] text-[13px] mb-12 tracking-[0.02em]"
+              style={{ fontWeight: 400 }}
+            >
+              {t("clickToYear")}
             </p>
           </AnimatedSection>
         </div>
@@ -206,7 +305,11 @@ export function AboutPage() {
             <div
               ref={timelineRef}
               className="overflow-x-auto pl-6 lg:pl-12 pr-6"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+              style={{
+                scrollbarWidth: "none",
+                msOverflowStyle: "none",
+                WebkitOverflowScrolling: "touch",
+              }}
             >
               <style>{`.overflow-x-auto::-webkit-scrollbar { display: none; }`}</style>
               <div className="flex gap-0 min-w-max pb-8 pt-4">
@@ -214,7 +317,7 @@ export function AboutPage() {
                   <button
                     key={item.year}
                     className="relative group text-left"
-                    style={{ width: '340px', flexShrink: 0 }}
+                    style={{ width: "340px", flexShrink: 0 }}
                     onClick={() => setSelectedYear(item)}
                   >
                     {/* Year Marker */}
@@ -223,10 +326,10 @@ export function AboutPage() {
                         className="text-[#e8ece8] group-hover:text-[#c8e6c9] transition-colors duration-500 block"
                         style={{
                           fontFamily: "Inter, sans-serif",
-                          fontSize: '64px',
+                          fontSize: "64px",
                           fontWeight: 800,
                           lineHeight: 1,
-                          letterSpacing: '-0.03em',
+                          letterSpacing: "-0.03em",
                         }}
                       >
                         {item.year}
@@ -247,24 +350,35 @@ export function AboutPage() {
                             <div className="w-8 h-8 mx-auto mb-2 rounded-full bg-[#e8ece8] flex items-center justify-center">
                               <span className="text-[#aaa] text-[10px]">+</span>
                             </div>
-                            <span className="text-[10px] text-[#bbb] tracking-[0.1em] uppercase" style={{ fontWeight: 500 }}>Фото</span>
+                            <span
+                              className="text-[10px] text-[#bbb] tracking-[0.1em] uppercase"
+                              style={{ fontWeight: 500 }}
+                            >
+                              Фото
+                            </span>
                           </div>
                         </div>
 
                         <h4
                           className="text-[#1a1a1a] mb-2"
                           style={{
-                            fontSize: '15px',
+                            fontSize: "15px",
                             fontWeight: 600,
                             lineHeight: 1.4,
                           }}
                         >
                           {item.title}
                         </h4>
-                        <p className="text-[#888] text-[13px] leading-[1.7]" style={{ fontWeight: 400 }}>
+                        <p
+                          className="text-[#888] text-[13px] leading-[1.7]"
+                          style={{ fontWeight: 400 }}
+                        >
                           {item.desc}
                         </p>
-                        <div className="mt-4 text-[11px] text-[#2E7D32] tracking-[0.08em] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ fontWeight: 600 }}>
+                        <div
+                          className="mt-4 text-[11px] text-[#2E7D32] tracking-[0.08em] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                          style={{ fontWeight: 600 }}
+                        >
                           Подробнее →
                         </div>
                       </div>
@@ -273,12 +387,23 @@ export function AboutPage() {
                 ))}
 
                 {/* "More to come" card */}
-                <div style={{ width: '240px', flexShrink: 0 }} className="flex items-center justify-center">
+                <div
+                  style={{ width: "240px", flexShrink: 0 }}
+                  className="flex items-center justify-center"
+                >
                   <div className="text-center px-8">
                     <div className="w-16 h-16 mx-auto mb-4 border border-dashed border-[#2E7D32]/20 flex items-center justify-center">
-                      <span className="text-[#2E7D32]/40 text-[24px]" style={{ fontWeight: 300 }}>+</span>
+                      <span
+                        className="text-[#2E7D32]/40 text-[24px]"
+                        style={{ fontWeight: 300 }}
+                      >
+                        +
+                      </span>
                     </div>
-                    <span className="text-[12px] text-[#999] tracking-[0.1em] uppercase" style={{ fontWeight: 500 }}>
+                    <span
+                      className="text-[12px] text-[#999] tracking-[0.1em] uppercase"
+                      style={{ fontWeight: 500 }}
+                    >
                       Продолжение следует
                     </span>
                   </div>
@@ -325,25 +450,28 @@ export function AboutPage() {
                   className="text-white/10 absolute right-8 top-4"
                   style={{
                     fontFamily: "Inter, sans-serif",
-                    fontSize: 'clamp(80px, 15vw, 140px)',
+                    fontSize: "clamp(80px, 15vw, 140px)",
                     fontWeight: 900,
                     lineHeight: 1,
-                    letterSpacing: '-0.04em',
+                    letterSpacing: "-0.04em",
                   }}
                 >
                   {selectedYear.year}
                 </span>
-                <span className="text-[11px] tracking-[0.3em] uppercase text-[#4CAF50]/60 block mb-3" style={{ fontWeight: 600 }}>
+                <span
+                  className="text-[11px] tracking-[0.3em] uppercase text-[#4CAF50]/60 block mb-3"
+                  style={{ fontWeight: 600 }}
+                >
                   История холдинга
                 </span>
                 <h3
                   className="text-white relative z-10"
                   style={{
                     fontFamily: "Inter, sans-serif",
-                    fontSize: 'clamp(24px, 3vw, 32px)',
+                    fontSize: "clamp(24px, 3vw, 32px)",
                     fontWeight: 700,
                     lineHeight: 1.2,
-                    letterSpacing: '-0.01em',
+                    letterSpacing: "-0.01em",
                   }}
                 >
                   {selectedYear.year}
@@ -353,11 +481,14 @@ export function AboutPage() {
               <div className="p-8 sm:p-12 -mt-6 relative bg-white">
                 <h4
                   className="text-[#1a1a1a] mb-4"
-                  style={{ fontSize: '20px', fontWeight: 700, lineHeight: 1.3 }}
+                  style={{ fontSize: "20px", fontWeight: 700, lineHeight: 1.3 }}
                 >
                   {selectedYear.title}
                 </h4>
-                <p className="text-[#666] text-[14px] leading-[1.8] mb-6" style={{ fontWeight: 400 }}>
+                <p
+                  className="text-[#666] text-[14px] leading-[1.8] mb-6"
+                  style={{ fontWeight: 400 }}
+                >
                   {selectedYear.detail}
                 </p>
 
@@ -367,13 +498,19 @@ export function AboutPage() {
                     <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-[#e8ece8] flex items-center justify-center">
                       <span className="text-[#aaa] text-[12px]">+</span>
                     </div>
-                    <span className="text-[11px] text-[#bbb] tracking-[0.1em] uppercase" style={{ fontWeight: 500 }}>
+                    <span
+                      className="text-[11px] text-[#bbb] tracking-[0.1em] uppercase"
+                      style={{ fontWeight: 500 }}
+                    >
                       Фото / Иллюстрация
                     </span>
                   </div>
                 </div>
 
-                <p className="text-[12px] text-[#ccc] italic" style={{ fontWeight: 400 }}>
+                <p
+                  className="text-[12px] text-[#ccc] italic"
+                  style={{ fontWeight: 400 }}
+                >
                   Детальная информация будет дополнена позднее
                 </p>
               </div>
@@ -383,26 +520,35 @@ export function AboutPage() {
       </AnimatePresence>
 
       {/* ========== SECTION 3 — РУКОВОДСТВО ========== */}
-      <section id="leadership" className="py-16 sm:py-24 lg:py-40 bg-[#fafafa] border-t border-black/[0.04]">
+      <section
+        id="leadership"
+        className="py-16 sm:py-24 lg:py-40 bg-[#fafafa] border-t border-black/[0.04]"
+      >
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <AnimatedSection>
-            <span className="text-[11px] tracking-[0.3em] uppercase text-[#2E7D32] block mb-4" style={{ fontWeight: 600 }}>
-              Команда
+            <span
+              className="text-[11px] tracking-[0.3em] uppercase text-[#2E7D32] block mb-4"
+              style={{ fontWeight: 600 }}
+            >
+              {t("team")}
             </span>
             <h2
               className="text-[#1a1a1a] mb-4"
               style={{
                 fontFamily: "Inter, sans-serif",
-                fontSize: 'clamp(26px, 3.5vw, 44px)',
+                fontSize: "clamp(26px, 3.5vw, 44px)",
                 fontWeight: 700,
                 lineHeight: 1.15,
-                letterSpacing: '-0.02em',
+                letterSpacing: "-0.02em",
               }}
             >
-              Руководство
+              {t("management")}
             </h2>
-            <p className="text-[#999] text-[13px] mb-12 sm:mb-16 tracking-[0.02em]" style={{ fontWeight: 400 }}>
-              Дополню после получения инфы — ниже представлена структура для заполнения
+            <p
+              className="text-[#999] text-[13px] mb-12 sm:mb-16 tracking-[0.02em]"
+              style={{ fontWeight: 400 }}
+            >
+              {t("managementDesc")}
             </p>
           </AnimatedSection>
 
@@ -419,7 +565,10 @@ export function AboutPage() {
                       <div className="w-20 h-20 rounded-full bg-white/60 backdrop-blur-sm flex items-center justify-center mb-3 group-hover:scale-105 transition-transform duration-500">
                         <User size={28} className="text-[#aaa]" />
                       </div>
-                      <span className="text-[10px] text-[#999] tracking-[0.15em] uppercase" style={{ fontWeight: 500 }}>
+                      <span
+                        className="text-[10px] text-[#999] tracking-[0.15em] uppercase"
+                        style={{ fontWeight: 500 }}
+                      >
                         Фото руководителя
                       </span>
                     </div>
@@ -427,7 +576,10 @@ export function AboutPage() {
                     <div className="absolute inset-0 bg-[#1B5E20]/0 group-hover:bg-[#1B5E20]/10 transition-colors duration-500" />
                     {/* Number badge */}
                     <div className="absolute top-4 left-4">
-                      <span className="text-[11px] text-[#999]/60 tracking-[0.1em]" style={{ fontWeight: 600 }}>
+                      <span
+                        className="text-[11px] text-[#999]/60 tracking-[0.1em]"
+                        style={{ fontWeight: 600 }}
+                      >
                         0{person.id}
                       </span>
                     </div>
@@ -436,14 +588,24 @@ export function AboutPage() {
                   {/* Info */}
                   <h4
                     className="text-[#1a1a1a] mb-1 group-hover:text-[#2E7D32] transition-colors duration-300"
-                    style={{ fontSize: '16px', fontWeight: 600, lineHeight: 1.4 }}
+                    style={{
+                      fontSize: "16px",
+                      fontWeight: 600,
+                      lineHeight: 1.4,
+                    }}
                   >
                     {person.name}
                   </h4>
-                  <p className="text-[#888] text-[13px]" style={{ fontWeight: 400 }}>
+                  <p
+                    className="text-[#888] text-[13px]"
+                    style={{ fontWeight: 400 }}
+                  >
                     {person.position}
                   </p>
-                  <div className="mt-3 flex items-center gap-1 text-[11px] text-[#2E7D32] tracking-[0.08em] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ fontWeight: 500 }}>
+                  <div
+                    className="mt-3 flex items-center gap-1 text-[11px] text-[#2E7D32] tracking-[0.08em] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ fontWeight: 500 }}
+                  >
                     Биография →
                   </div>
                 </div>
@@ -486,7 +648,10 @@ export function AboutPage() {
                     <div className="w-24 h-24 rounded-full bg-white/50 flex items-center justify-center mx-auto mb-3">
                       <User size={36} className="text-[#aaa]" />
                     </div>
-                    <span className="text-[10px] text-[#999] tracking-[0.15em] uppercase" style={{ fontWeight: 500 }}>
+                    <span
+                      className="text-[10px] text-[#999] tracking-[0.15em] uppercase"
+                      style={{ fontWeight: 500 }}
+                    >
                       Портрет
                     </span>
                   </div>
@@ -494,28 +659,37 @@ export function AboutPage() {
 
                 {/* Bio Content */}
                 <div className="md:col-span-3 p-8 lg:p-12">
-                  <span className="text-[11px] tracking-[0.2em] uppercase text-[#2E7D32] block mb-5" style={{ fontWeight: 600 }}>
+                  <span
+                    className="text-[11px] tracking-[0.2em] uppercase text-[#2E7D32] block mb-5"
+                    style={{ fontWeight: 600 }}
+                  >
                     Биография
                   </span>
                   <h3
                     className="text-[#1a1a1a] mb-2"
                     style={{
                       fontFamily: "Inter, sans-serif",
-                      fontSize: '26px',
+                      fontSize: "26px",
                       fontWeight: 700,
                       lineHeight: 1.2,
-                      letterSpacing: '-0.01em',
+                      letterSpacing: "-0.01em",
                     }}
                   >
                     {selectedLeader.name}
                   </h3>
-                  <p className="text-[#2E7D32] text-[14px] mb-8" style={{ fontWeight: 500 }}>
+                  <p
+                    className="text-[#2E7D32] text-[14px] mb-8"
+                    style={{ fontWeight: 500 }}
+                  >
                     {selectedLeader.position}
                   </p>
 
                   {/* Bio text or placeholder */}
                   {selectedLeader.bio ? (
-                    <p className="text-[#555] text-[14px] leading-[1.8] mb-6" style={{ fontWeight: 400 }}>
+                    <p
+                      className="text-[#555] text-[14px] leading-[1.8] mb-6"
+                      style={{ fontWeight: 400 }}
+                    >
                       {selectedLeader.bio}
                     </p>
                   ) : null}
@@ -529,7 +703,10 @@ export function AboutPage() {
                     <div className="h-[14px] bg-[#f0f2f0] rounded-sm w-[72%]" />
                   </div>
 
-                  <p className="mt-8 text-[12px] text-[#bbb] italic" style={{ fontWeight: 400 }}>
+                  <p
+                    className="mt-8 text-[12px] text-[#bbb] italic"
+                    style={{ fontWeight: 400 }}
+                  >
                     Полная биографическая информация будет добавлена позднее
                   </p>
                 </div>

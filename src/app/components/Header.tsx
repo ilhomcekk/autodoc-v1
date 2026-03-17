@@ -20,10 +20,9 @@ export function Header() {
   const navItems = [
     { label: t("aboutHolding"), path: "/about" },
     { label: t("projects"), path: "/projects" },
-    { label: "Карьера", path: "/career" },
-    { label: "Новости", path: "/news" },
-    { label: "Партнеры", path: "/partners" },
-    { label: "Контакты", path: "/contact" },
+    { label: t("career"), path: "/career" },
+    { label: t("news"), path: "/news" },
+    { label: t("contacts"), path: "/contact" },
   ];
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
