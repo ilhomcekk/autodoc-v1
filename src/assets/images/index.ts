@@ -1,4 +1,5 @@
 import Logo from "./Autodoc grey2.svg";
+import LogoHolding from "./logoHolding.png";
 import AnonsVideo from "./anons.mp4";
 // partners start
 import PoytaxtBank from "./partners/PoytaxtBank.png";
@@ -37,10 +38,14 @@ import Queue from "./projects/queue.jpg";
 import RegisterTransport from "./projects/registerTransport.jpg";
 import SafeRoad from "./projects/safeRoad.jpg";
 import Kassa from "./projects/kassa.jpg";
+import DavlatXizmatlari from "./projects/davlatXizmatlari.jpg";
+import YPX from "./projects/ypx.jpg";
+import Infratuzilma from "./projects/infratuzilma.jpg";
 // projests end
 
 const images = {
   Logo,
+  LogoHolding,
   AnonsVideo,
   PoytaxtBank,
   AloqaBank,
@@ -75,7 +80,10 @@ const images = {
   Queue,
   RegisterTransport,
   SafeRoad,
-  Kassa
+  Kassa,
+  DavlatXizmatlari,
+  YPX,
+  Infratuzilma,
 };
 
 export default images;

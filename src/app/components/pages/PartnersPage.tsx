@@ -154,7 +154,7 @@ export function PartnersPage() {
                   {t("governmentPartners")}
                 </h2>
               </div>
-              <div className="lg:col-span-8">
+              <div className="lg:col-span-8 self-center">
                 <p
                   className="text-[#888] text-[15px] leading-[1.8] max-w-[520px]"
                   style={{ fontWeight: 400 }}
@@ -230,7 +230,7 @@ export function PartnersPage() {
                   {t("commercialPartners")}
                 </h2>
               </div>
-              <div className="lg:col-span-8">
+              <div className="lg:col-span-8 self-center">
                 <p
                   className="text-[#888] text-[15px] leading-[1.8] max-w-[520px]"
                   style={{ fontWeight: 400 }}

@@ -60,7 +60,7 @@ export function ProjectsPage() {
       task: t("systemEDOTask"),
       solution: t("systemEDOSolution"),
       result: t("systemEDOResult"),
-      photo: images.ElectronCash,
+      photo: images.DataAnalytics,
     },
     {
       id: 3,

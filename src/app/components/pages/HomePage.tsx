@@ -8,31 +8,8 @@ import { useTranslation } from "react-i18next";
 
 const HERO_IMG =
   "https://images.unsplash.com/photo-1747499967281-c0c5eec9933c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbWFydCUyMGNpdHklMjBhZXJpYWwlMjB2aWV3JTIwbmlnaHR8ZW58MXx8fHwxNzczMzgwMDY3fDA&ixlib=rb-4.1.0&q=80&w=1080";
-const SERVER_IMG =
-  "https://images.unsplash.com/photo-1611582777035-1b4e4c77aa72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwaW5mcmFzdHJ1Y3R1cmUlMjBzZXJ2ZXIlMjByb29tJTIwZGFya3xlbnwxfHx8fDE3NzMzODAwNjV8MA&ixlib=rb-4.1.0&q=80&w=1080";
-const AI_IMG =
-  "https://images.unsplash.com/photo-1761223976379-04c361d3068a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlJTIwbWFjaGluZSUyMGxlYXJuaW5nJTIwdmlzdWFsaXphdGlvbnxlbnwxfHx8fDE3NzMzODAwNzF8MA&ixlib=rb-4.1.0&q=80&w=1080";
-const GOV_IMG =
-  "https://images.unsplash.com/photo-1768637757717-3e47abf07422?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnb3Zlcm5tZW50JTIwZGlnaXRhbCUyMHNlcnZpY2VzJTIwdGVjaG5vbG9neXxlbnwxfHx8fDE3NzMzNTc0MTV8MA&ixlib=rb-4.1.0&q=80&w=1080";
 const TASHKENT_IMG =
   "https://images.unsplash.com/photo-1743412009452-331949b60907?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxVemJla2lzdGFuJTIwVGFzaGtlbnQlMjBjaXR5c2NhcGUlMjBtb2Rlcm58ZW58MXx8fHwxNzczMzgwMDcxfDA&ixlib=rb-4.1.0&q=80&w=1080";
-
-const partners = [
-  "МВД",
-  "ГУБДД",
-  "МинЮст",
-  "ЦБРУ",
-  "ГНК",
-  "МИФТ",
-  "Кадастр",
-  "UZCARD",
-  "HUMO",
-  "Beeline",
-  "Ucell",
-  "UzAuto",
-  "Artel",
-  "Munis",
-];
 
 function AnimatedSection({
   children,
@@ -60,6 +37,22 @@ function AnimatedSection({
 
 export function HomePage() {
   const { t } = useTranslation();
+  const partners = [
+    images.PoytaxtBank,
+    images.AloqaBank,
+    images.KapitalSugurta,
+    images.MikrokreditBank,
+    images.UniversalBank,
+    images.Beeline,
+    images.Abozor,
+    images.OrientFinansBank,
+    images.kapitalBank,
+    images.Uztelecom,
+    images.XalqBank,
+    images.SmartBank,
+    images.HamkorBank,
+    images.AgroBank,
+  ];
   const [heroLoaded, setHeroLoaded] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [showVideoModal, setShowVideoModal] = useState(false);
@@ -80,21 +73,21 @@ export function HomePage() {
       id: 1,
       title: t("digitalizationOfPublicServices"),
       desc: t("digitalizationOfPublicServicesDesc"),
-      image: GOV_IMG,
+      image: images.DavlatXizmatlari,
       filter: "edo",
     },
     {
       id: 2,
       title: t("intelligentSystemsAndAnalytics"),
       desc: t("intelligentSystemsAndAnalyticsDesc"),
-      image: AI_IMG,
+      image: images.AutoInfo,
       filter: "ai",
     },
     {
       id: 3,
       title: t("digitalInfrastructure"),
       desc: t("digitalInfrastructureDesc"),
-      image: SERVER_IMG,
+      image: images.Infratuzilma,
       filter: "infra",
     },
   ];
@@ -546,12 +539,13 @@ export function HomePage() {
                   key={i}
                   className="bg-white flex items-center justify-center py-6 sm:py-8 px-4 group hover:bg-[#f5f7f5] transition-colors duration-300"
                 >
-                  <span
+                  <img src={partner} className="partner-black-image" alt="" />
+                  {/* <span
                     className="text-[12px] sm:text-[13px] tracking-[0.12em] uppercase text-[#999] group-hover:text-[#2E7D32] transition-colors duration-300"
                     style={{ fontWeight: 600 }}
                   >
                     {partner}
-                  </span>
+                  </span> */}
                 </div>
               ))}
             </div>

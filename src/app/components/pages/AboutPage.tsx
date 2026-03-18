@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { useTranslation } from "react-i18next";
+import images from "../../../assets/images";
 
 const BUILDING_IMG =
   "https://images.unsplash.com/photo-1765279077820-d3f4f2bcdca5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBidWlsZGluZyUyMGdsYXNzJTIwZmFjYWRlJTIwbW9kZXJufGVufDF8fHx8MTc3MzM4MDA3MXww&ixlib=rb-4.1.0&q=80&w=1080";
@@ -46,64 +47,70 @@ export function AboutPage() {
       title: t("foundingCompany"),
       desc: t("foundingCompanyDesc"),
       detail: t("foundingCompanyDetail"),
+      photo: images.LogoHolding,
     },
     {
       year: "2022",
       title: t("firstProject"),
       desc: t("firstProjectDesc"),
       detail: t("firstProjectDetail"),
+      photo: images.Infratuzilma,
     },
     {
       year: "2023",
       title: t("expensionDirections"),
       desc: t("expensionDirectionsDesc"),
       detail: t("expensionDirectionsDetail"),
+      // photo: images.LogoHolding,
     },
     {
       year: "2023",
       title: t("governmentPrivatePartnership"),
       desc: t("governmentPrivatePartnershipDesc"),
       detail: t("governmentPrivatePartnershipDetail"),
+      // photo: images.LogoHolding,
     },
     {
       year: "2023",
       title: t("infrastructureDevelopment"),
       desc: t("infrastructureDevelopmentDesc"),
       detail: t("infrastructureDevelopmentDetail"),
+      // photo: images.LogoHolding,
     },
     {
       year: "2025",
       title: t("formationHolding"),
       desc: t("formationHoldingDesc"),
       detail: t("formationHoldingDetail"),
+      // photo: images.LogoHolding,
     },
   ];
   const leadership = [
-  {
-    id: 1,
-    name: "Faxriddinov S. Sh",
-    position: "Председатель холдинга",
-    bio: "Опыт управления крупными технологическими проектами в государственном секторе. Руководит стратегическим развитием холдинга и координирует работу всех направлений.",
-  },
-  {
-    id: 2,
-    name: "Inogamov Sherzod",
-    position: "Директор по стратегии",
-    bio: "Отвечает за операционную деятельность холдинга, управление проектами и взаимодействие с ключевыми партнерами. Обеспечивает эффективность всех бизнес-процессов.",
-  },
-  {
-    id: 3,
-    name: "Umarov Murod",
-    position: "Директор по инвестициям",
-    bio: "Руководит технологическим развитием холдинга, определяет архитектуру решений и внедрение инновационных технологий. Курирует все технические команды.",
-  },
-  {
-    id: 4,
-    name: "Karimov Shamsiddin",
-    position: "Директор по информационным технологиям",
-    bio: "Управляет финансовой стратегией холдинга, инвестиционными процессами и экономической эффективностью проектов. Обеспечивает финансовую устойчивость компании.",
-  },
-];
+    {
+      id: 1,
+      name: "Faxriddinov S. Sh",
+      position: "Председатель холдинга",
+      bio: "Опыт управления крупными технологическими проектами в государственном секторе. Руководит стратегическим развитием холдинга и координирует работу всех направлений.",
+    },
+    {
+      id: 2,
+      name: "Inogamov Sherzod",
+      position: "Директор по стратегии",
+      bio: "Отвечает за операционную деятельность холдинга, управление проектами и взаимодействие с ключевыми партнерами. Обеспечивает эффективность всех бизнес-процессов.",
+    },
+    {
+      id: 3,
+      name: "Umarov Murod",
+      position: "Директор по инвестициям",
+      bio: "Руководит технологическим развитием холдинга, определяет архитектуру решений и внедрение инновационных технологий. Курирует все технические команды.",
+    },
+    {
+      id: 4,
+      name: "Karimov Shamsiddin",
+      position: "Директор по информационным технологиям",
+      bio: "Управляет финансовой стратегией холдинга, инвестиционными процессами и экономической эффективностью проектов. Обеспечивает финансовую устойчивость компании.",
+    },
+  ];
   const [selectedLeader, setSelectedLeader] = useState<
     (typeof leadership)[0] | null
   >(null);
@@ -338,7 +345,12 @@ export function AboutPage() {
                       <div className="bg-[#fafafa] border border-black/[0.04] p-6 sm:p-7 group-hover:border-[#2E7D32]/15 group-hover:bg-[#f8faf8] transition-all duration-500">
                         {/* Placeholder Image Slot */}
                         <div className="w-full h-[120px] sm:h-[140px] bg-[#f0f2f0] mb-5 flex items-center justify-center border border-dashed border-black/[0.06] group-hover:border-[#2E7D32]/15 transition-colors">
-                          <div className="text-center">
+                          <img
+                            src={item.photo}
+                            className="max-w-full max-h-full text-center"
+                            alt=""
+                          />
+                          {/* <div className="text-center">
                             <div className="w-8 h-8 mx-auto mb-2 rounded-full bg-[#e8ece8] flex items-center justify-center">
                               <span className="text-[#aaa] text-[10px]">+</span>
                             </div>
@@ -348,7 +360,7 @@ export function AboutPage() {
                             >
                               Фото
                             </span>
-                          </div>
+                          </div> */}
                         </div>
 
                         <h4
@@ -486,7 +498,8 @@ export function AboutPage() {
 
                 {/* Optional image placeholder */}
                 <div className="h-[180px] bg-[#f5f5f5] border border-dashed border-black/[0.08] flex items-center justify-center mb-6">
-                  <div className="text-center">
+                  <img src={selectedYear.photo} className="w-full h-full object-contain" alt="" />
+                  {/* <div className="text-center">
                     <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-[#e8ece8] flex items-center justify-center">
                       <span className="text-[#aaa] text-[12px]">+</span>
                     </div>
@@ -496,7 +509,7 @@ export function AboutPage() {
                     >
                       Фото / Иллюстрация
                     </span>
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* <p
