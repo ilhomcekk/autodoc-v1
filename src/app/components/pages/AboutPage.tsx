@@ -68,7 +68,7 @@ export function AboutPage() {
       title: t("governmentPrivatePartnership"),
       desc: t("governmentPrivatePartnershipDesc"),
       detail: t("governmentPrivatePartnershipDetail"),
-      photo: images.IIV,
+      photo: images.Expansion,
     },
     {
       year: "2023",
