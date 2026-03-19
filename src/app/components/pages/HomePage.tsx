@@ -238,13 +238,13 @@ export function HomePage() {
             className="absolute right-6 lg:right-12 bottom-16 sm:bottom-20 lg:bottom-32 hidden md:flex items-center gap-3 cursor-pointer group"
           >
             <span
-              className="text-white/30 text-[11px] tracking-[0.15em] uppercase group-hover:text-white/50 transition-colors"
+              className="text-[#2E7D32] text-[11px] tracking-[0.15em] uppercase group-hover:text-white/50 transition-colors"
               style={{ fontWeight: 500 }}
             >
               {t("seeVideo")}
             </span>
-            <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:border-white/40 group-hover:bg-white/[0.05] transition-all duration-500">
-              <Play size={14} className="text-white/60 ml-0.5" />
+            <div className="w-12 h-12 rounded-full border border-[#2E7D32] flex items-center justify-center group-hover:border-white/40 group-hover:bg-white/[0.05] transition-all duration-500">
+              <Play size={14} className="text-[#2E7D32] ml-0.5" />
             </div>
           </motion.button>
         </div>
