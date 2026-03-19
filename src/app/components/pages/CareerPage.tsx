@@ -14,11 +14,7 @@ import {
 } from "lucide-react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { useTranslation } from "react-i18next";
-
-const TEAM_IMG =
-  "https://images.unsplash.com/photo-1758270705317-3ef6142d306f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNobm9sb2d5JTIwdGVhbSUyMGNvbGxhYm9yYXRpb24lMjBkaXZlcnNlfGVufDF8fHx8MTc3MzM4MDA2OXww&ixlib=rb-4.1.0&q=80&w=1080";
-const OFFICE_IMG =
-  "https://images.unsplash.com/photo-1641998148499-cb6b55a3c0d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjB3b3Jrc3BhY2UlMjBwcmVtaXVtfGVufDF8fHx8MTc3MzM4MDA2Nnww&ixlib=rb-4.1.0&q=80&w=1080";
+import images from "../../../assets/images";
 
 function AnimatedSection({
   children,
@@ -176,7 +172,7 @@ export function CareerPage() {
         <div className="relative min-h-[60vh] sm:min-h-[75vh] flex items-end">
           <div className="absolute inset-0">
             <ImageWithFallback
-              src={TEAM_IMG}
+              src={images.Career}
               alt="AUTODOC Team"
               className="w-full h-full object-cover opacity-35"
             />
@@ -524,7 +520,7 @@ export function CareerPage() {
               <div className="lg:col-span-7">
                 <div className="relative">
                   <ImageWithFallback
-                    src={OFFICE_IMG}
+                    src={images.Team1}
                     alt="AUTODOC Office"
                     className="w-full h-[280px] sm:h-[400px] lg:h-[480px] object-cover"
                   />

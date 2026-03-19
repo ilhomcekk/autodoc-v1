@@ -47,28 +47,28 @@ export function AboutPage() {
       title: t("foundingCompany"),
       desc: t("foundingCompanyDesc"),
       detail: t("foundingCompanyDetail"),
-      photo: images.LogoHolding,
+      photo: images.BlackLogoHolding,
     },
     {
       year: "2022",
       title: t("firstProject"),
       desc: t("firstProjectDesc"),
       detail: t("firstProjectDetail"),
-      photo: images.Infratuzilma,
+      // photo: images.Infratuzilma,
     },
     {
       year: "2023",
       title: t("expensionDirections"),
       desc: t("expensionDirectionsDesc"),
       detail: t("expensionDirectionsDetail"),
-      // photo: images.LogoHolding,
+      photo: images.SafeRoad,
     },
     {
       year: "2023",
       title: t("governmentPrivatePartnership"),
       desc: t("governmentPrivatePartnershipDesc"),
       detail: t("governmentPrivatePartnershipDetail"),
-      // photo: images.LogoHolding,
+      photo: images.IIV,
     },
     {
       year: "2023",
@@ -82,7 +82,7 @@ export function AboutPage() {
       title: t("formationHolding"),
       desc: t("formationHoldingDesc"),
       detail: t("formationHoldingDetail"),
-      // photo: images.LogoHolding,
+      photo: images.Infratuzilma,
     },
   ];
   const leadership = [
@@ -607,12 +607,12 @@ export function AboutPage() {
                   >
                     {person.position}
                   </p>
-                  <div
+                  {/* <div
                     className="mt-3 flex items-center gap-1 text-[11px] text-[#2E7D32] tracking-[0.08em] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{ fontWeight: 500 }}
                   >
                     {t("biography")} →
-                  </div>
+                  </div> */}
                 </div>
               </AnimatedSection>
             ))}

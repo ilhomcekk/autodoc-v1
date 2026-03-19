@@ -1,6 +1,11 @@
 import Logo from "./Autodoc grey2.svg";
 import LogoHolding from "./logoHolding.png";
 import AnonsVideo from "./anons.mp4";
+import Career from './career.jpg';
+import Team1 from './team1.JPG';
+import BlackLogoHolding from './blackLogoHolding.png';
+import Expansion from './expansion.png'
+import IIV from './iiv.jpg'
 // partners start
 import PoytaxtBank from "./partners/PoytaxtBank.png";
 import AloqaBank from "./partners/Aloqabank.png";
@@ -46,7 +51,12 @@ import Infratuzilma from "./projects/infratuzilma.jpg";
 const images = {
   Logo,
   LogoHolding,
+  BlackLogoHolding,
   AnonsVideo,
+  Career,
+  Team1,
+  IIV,
+  Expansion,
   PoytaxtBank,
   AloqaBank,
   KapitalSugurta,
