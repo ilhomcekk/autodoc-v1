@@ -235,16 +235,16 @@ export function HomePage() {
             animate={heroLoaded ? { opacity: 1 } : {}}
             transition={{ duration: 1, delay: 1.5 }}
             onClick={() => setShowVideoModal(true)}
-            className="absolute right-6 lg:right-12 bottom-16 sm:bottom-20 lg:bottom-32 hidden md:flex items-center gap-3 cursor-pointer group"
+            className="bg-[#2E7D32] px-6 py-[2px] absolute right-6 lg:right-12 bottom-16 sm:bottom-20 lg:bottom-32 hidden md:flex items-center cursor-pointer group"
           >
             <span
-              className="text-[#2E7D32] text-[11px] tracking-[0.15em] uppercase group-hover:text-white/50 transition-colors"
+              className="text-white text-[13px] uppercase tracking-[0.15em] uppercase group-hover:text-white/50 transition-colors"
               style={{ fontWeight: 500 }}
             >
               {t("seeVideo")}
             </span>
-            <div className="w-12 h-12 rounded-full border border-[#2E7D32] flex items-center justify-center group-hover:border-white/40 group-hover:bg-white/[0.05] transition-all duration-500">
-              <Play size={14} className="text-[#2E7D32] ml-0.5" />
+            <div className="w-12 h-12 rounded-full  flex items-center justify-center group-hover:border-white/40 group-hover:bg-white/[0.05] transition-all duration-500">
+              <Play size={14} className="text-white ml-0.5" />
             </div>
           </motion.button>
         </div>
