@@ -54,7 +54,7 @@ export function AboutPage() {
       title: t("firstProject"),
       desc: t("firstProjectDesc"),
       detail: t("firstProjectDetail"),
-      // photo: images.Infratuzilma,
+      photo: images.FirstProject,
     },
     {
       year: "2023",
@@ -75,7 +75,7 @@ export function AboutPage() {
       title: t("infrastructureDevelopment"),
       desc: t("infrastructureDevelopmentDesc"),
       detail: t("infrastructureDevelopmentDetail"),
-      // photo: images.LogoHolding,
+      photo: images.Infra,
     },
     {
       year: "2025",

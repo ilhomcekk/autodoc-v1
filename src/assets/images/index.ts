@@ -46,6 +46,8 @@ import Kassa from "./projects/kassa.jpg";
 import DavlatXizmatlari from "./projects/davlatXizmatlari.jpg";
 import YPX from "./projects/ypx.jpg";
 import Infratuzilma from "./projects/infratuzilma.jpg";
+import Infra from "./projects/infra.jpg";
+import FirstProject from "./projects/firstProject.jpg";
 // projests end
 // management start
 import Management1 from "./management/management1.jpg";
@@ -104,6 +106,8 @@ const images = {
   Management2,
   Management3,
   Management4,
+  FirstProject,
+  Infra,
 };
 
 export default images;
