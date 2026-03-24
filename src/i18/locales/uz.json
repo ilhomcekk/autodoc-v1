@@ -214,5 +214,9 @@
   "devOpsList3": "CI/CD",
   "devOpsList4": "Monitoring",
   "requirements": "Talablar",
-  "reply": "Ariza berish"
+  "reply": "Ariza berish",
+  "chairmanHolding": "Xolding kompaniyasi raisi",
+  "directorStrategy": "Strategiya direktori",
+  "investmentDirector": "Investitsiya direktori",
+  "directorInformationTechnology": "Axborot texnologiyalari direktori"
 }

@@ -214,5 +214,9 @@
   "devOpsList3": "CI/CD",
   "devOpsList4": "Monitoring",
   "requirements": "Requirements",
-  "reply": "Apply"
+  "reply": "Apply",
+  "chairmanHolding": "Chairman of the holding company",
+  "directorStrategy": "Director of Strategy",
+  "investmentDirector": "Investment Director",
+  "directorInformationTechnology": "Director of Information Technology"
 }

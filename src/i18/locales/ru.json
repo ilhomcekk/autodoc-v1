@@ -214,5 +214,9 @@
   "devOpsList3": "Опыт работы с CI/CD пайплайнами",
   "devOpsList4": "Навыки мониторинга и алертинга",
   "requirements": "Требования",
-  "reply": "Откликнуться"
+  "reply": "Откликнуться",
+  "chairmanHolding": "Председатель холдинга",
+  "directorStrategy": "Директор по стратегии",
+  "investmentDirector": "Директор по инвестициям",
+  "directorInformationTechnology": "Директор по информационным технологиям"
 }

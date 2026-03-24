@@ -88,29 +88,29 @@ export function AboutPage() {
   const leadership = [
     {
       id: 1,
-      name: "Faxriddinov S. Sh",
-      position: "Председатель холдинга",
+      name: "Fahriddinov Sardor",
+      position: t("chairmanHolding"),
       bio: "Опыт управления крупными технологическими проектами в государственном секторе. Руководит стратегическим развитием холдинга и координирует работу всех направлений.",
       photo: images.Management1,
     },
     {
       id: 2,
       name: "Inogamov Sherzod",
-      position: "Директор по стратегии",
+      position: t("directorStrategy"),
       bio: "Отвечает за операционную деятельность холдинга, управление проектами и взаимодействие с ключевыми партнерами. Обеспечивает эффективность всех бизнес-процессов.",
       photo: images.Management2,
     },
     {
       id: 3,
       name: "Umarov Murod",
-      position: "Директор по инвестициям",
+      position: t("investmentDirector"),
       bio: "Руководит технологическим развитием холдинга, определяет архитектуру решений и внедрение инновационных технологий. Курирует все технические команды.",
       photo: images.Management3,
     },
     {
       id: 4,
       name: "Karimov Shamsiddin",
-      position: "Директор по информационным технологиям",
+      position: t("directorInformationTechnology"),
       bio: "Управляет финансовой стратегией холдинга, инвестиционными процессами и экономической эффективностью проектов. Обеспечивает финансовую устойчивость компании.",
       photo: images.Management4,
     },
@@ -557,12 +557,12 @@ export function AboutPage() {
             >
               {t("management")}
             </h2>
-            <p
+            {/* <p
               className="text-[#999] text-[13px] mb-12 sm:mb-16 tracking-[0.02em]"
               style={{ fontWeight: 400 }}
             >
               {t("managementDesc")}
-            </p>
+            </p> */}
           </AnimatedSection>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
