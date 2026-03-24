@@ -91,24 +91,28 @@ export function AboutPage() {
       name: "Faxriddinov S. Sh",
       position: "Председатель холдинга",
       bio: "Опыт управления крупными технологическими проектами в государственном секторе. Руководит стратегическим развитием холдинга и координирует работу всех направлений.",
+      photo: images.Management1,
     },
     {
       id: 2,
       name: "Inogamov Sherzod",
       position: "Директор по стратегии",
       bio: "Отвечает за операционную деятельность холдинга, управление проектами и взаимодействие с ключевыми партнерами. Обеспечивает эффективность всех бизнес-процессов.",
+      photo: images.Management2,
     },
     {
       id: 3,
       name: "Umarov Murod",
       position: "Директор по инвестициям",
       bio: "Руководит технологическим развитием холдинга, определяет архитектуру решений и внедрение инновационных технологий. Курирует все технические команды.",
+      photo: images.Management3,
     },
     {
       id: 4,
       name: "Karimov Shamsiddin",
       position: "Директор по информационным технологиям",
       bio: "Управляет финансовой стратегией холдинга, инвестиционными процессами и экономической эффективностью проектов. Обеспечивает финансовую устойчивость компании.",
+      photo: images.Management4,
     },
   ];
   const [selectedLeader, setSelectedLeader] = useState<
@@ -498,7 +502,11 @@ export function AboutPage() {
 
                 {/* Optional image placeholder */}
                 <div className="h-[180px] bg-[#f5f5f5] border border-dashed border-black/[0.08] flex items-center justify-center mb-6">
-                  <img src={selectedYear.photo} className="w-full h-full object-contain" alt="" />
+                  <img
+                    src={selectedYear.photo}
+                    className="w-full h-full object-contain"
+                    alt=""
+                  />
                   {/* <div className="text-center">
                     <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-[#e8ece8] flex items-center justify-center">
                       <span className="text-[#aaa] text-[12px]">+</span>
@@ -566,7 +574,8 @@ export function AboutPage() {
                 >
                   {/* Photo Placeholder */}
                   <div className="aspect-[3/4] bg-gradient-to-b from-[#e8ece8] to-[#dde3dd] mb-5 overflow-hidden relative">
-                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <img src={person.photo} className="h-full w-full object-cover object-top" alt="" />
+                    {/* <div className="absolute inset-0 flex flex-col items-center justify-center">
                       <div className="w-20 h-20 rounded-full bg-white/60 backdrop-blur-sm flex items-center justify-center mb-3 group-hover:scale-105 transition-transform duration-500">
                         <User size={28} className="text-[#aaa]" />
                       </div>
@@ -576,7 +585,7 @@ export function AboutPage() {
                       >
                         Фото руководителя
                       </span>
-                    </div>
+                    </div> */}
                     {/* Hover overlay */}
                     <div className="absolute inset-0 bg-[#1B5E20]/0 group-hover:bg-[#1B5E20]/10 transition-colors duration-500" />
                     {/* Number badge */}

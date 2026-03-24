@@ -1,11 +1,11 @@
 import Logo from "./Autodoc grey2.svg";
 import LogoHolding from "./logoHolding.png";
 import AnonsVideo from "./anons.mp4";
-import Career from './career.jpg';
-import Team1 from './team1.JPG';
-import BlackLogoHolding from './blackLogoHolding.png';
-import Expansion from './expansion.png'
-import IIV from './iiv.jpg'
+import Career from "./career.jpg";
+import Team1 from "./team1.JPG";
+import BlackLogoHolding from "./blackLogoHolding.png";
+import Expansion from "./expansion.png";
+import IIV from "./iiv.jpg";
 // partners start
 import PoytaxtBank from "./partners/PoytaxtBank.png";
 import AloqaBank from "./partners/Aloqabank.png";
@@ -47,6 +47,12 @@ import DavlatXizmatlari from "./projects/davlatXizmatlari.jpg";
 import YPX from "./projects/ypx.jpg";
 import Infratuzilma from "./projects/infratuzilma.jpg";
 // projests end
+// management start
+import Management1 from "./management/management1.jpg";
+import Management2 from "./management/management2.jpg";
+import Management3 from "./management/management3.jpg";
+import Management4 from "./management/management4.jpg";
+// management end
 
 const images = {
   Logo,
@@ -94,6 +100,10 @@ const images = {
   DavlatXizmatlari,
   YPX,
   Infratuzilma,
+  Management1,
+  Management2,
+  Management3,
+  Management4,
 };
 
 export default images;
