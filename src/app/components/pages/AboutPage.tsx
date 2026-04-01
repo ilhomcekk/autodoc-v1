@@ -84,6 +84,13 @@ export function AboutPage() {
       detail: t("formationHoldingDetail"),
       photo: images.Infratuzilma,
     },
+    {
+      year: "2025",
+      title: t("ecoSticker"),
+      desc: t("ecoStickerDesc"),
+      detail: t("ecoStickerDetail"),
+      photo: images.EcoSticker,
+    },
   ];
   const leadership = [
     {
@@ -574,7 +581,11 @@ export function AboutPage() {
                 >
                   {/* Photo Placeholder */}
                   <div className="aspect-[3/4] bg-gradient-to-b from-[#e8ece8] to-[#dde3dd] mb-5 overflow-hidden relative">
-                    <img src={person.photo} className="h-full w-full object-cover object-top" alt="" />
+                    <img
+                      src={person.photo}
+                      className="h-full w-full object-cover object-top"
+                      alt=""
+                    />
                     {/* <div className="absolute inset-0 flex flex-col items-center justify-center">
                       <div className="w-20 h-20 rounded-full bg-white/60 backdrop-blur-sm flex items-center justify-center mb-3 group-hover:scale-105 transition-transform duration-500">
                         <User size={28} className="text-[#aaa]" />

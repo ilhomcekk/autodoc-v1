@@ -48,6 +48,7 @@ import YPX from "./projects/ypx.jpg";
 import Infratuzilma from "./projects/infratuzilma.jpg";
 import Infra from "./projects/infra.jpg";
 import FirstProject from "./projects/firstProject.jpg";
+import EcoSticker from "./projects/ecosticker.jpg";
 // projests end
 // management start
 import Management1 from "./management/management1.jpg";
@@ -107,6 +108,7 @@ const images = {
   Management3,
   Management4,
   FirstProject,
+  EcoSticker,
   Infra,
 };
 
