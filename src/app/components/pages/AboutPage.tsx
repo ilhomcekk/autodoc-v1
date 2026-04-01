@@ -385,7 +385,7 @@ export function AboutPage() {
                           {item.title}
                         </h4>
                         <p
-                          className="text-[#888] text-[13px] leading-[1.7]"
+                          className="line-clamp-3 text-[#888] text-[13px] leading-[1.7]"
                           style={{ fontWeight: 400 }}
                         >
                           {item.desc}

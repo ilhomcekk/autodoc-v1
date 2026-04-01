@@ -132,6 +132,13 @@ export function ProjectsPage() {
       result: t("digitalServiceSystemResult"),
       photo: images.Kassa,
     },
+    {
+      id: 10,
+      title: t("ecoSticker"),
+      desc: t("ecoStickerDetail"),
+      category: "infra",
+      photo: images.EcoSticker,
+    },
   ];
   const achievements = [
     { number: "99.2%", label: t("recognitionAccuracy") },
@@ -403,67 +410,79 @@ export function ProjectsPage() {
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-                <div>
-                  <h4
-                    className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-3"
-                    style={{ fontWeight: 600 }}
-                  >
-                    {t("description")}
-                  </h4>
-                  <p
-                    className="text-[#555] text-[14px] leading-[1.8]"
-                    style={{ fontWeight: 400 }}
-                  >
-                    {selectedProject.desc}
-                  </p>
-                </div>
-                <div>
-                  <h4
-                    className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-3"
-                    style={{ fontWeight: 600 }}
-                  >
-                    {t("task")}
-                  </h4>
-                  <p
-                    className="text-[#555] text-[14px] leading-[1.8]"
-                    style={{ fontWeight: 400 }}
-                  >
-                    {selectedProject.task}
-                  </p>
-                </div>
-                <div>
-                  <h4
-                    className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-3"
-                    style={{ fontWeight: 600 }}
-                  >
-                    {t("solution")}
-                  </h4>
-                  <p
-                    className="text-[#555] text-[14px] leading-[1.8]"
-                    style={{ fontWeight: 400 }}
-                  >
-                    {selectedProject.solution}
-                  </p>
-                </div>
-                <div>
-                  <h4
-                    className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-3"
-                    style={{ fontWeight: 600 }}
-                  >
-                    {t("results")}
-                  </h4>
-                  <p
-                    className="text-[#2E7D32] text-[14px] leading-[1.8]"
-                    style={{ fontWeight: 600 }}
-                  >
-                    {selectedProject.result}
-                  </p>
-                </div>
+                {selectedProject.desc ? (
+                  <div>
+                    <h4
+                      className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-3"
+                      style={{ fontWeight: 600 }}
+                    >
+                      {t("description")}
+                    </h4>
+                    <p
+                      className="text-[#555] text-[14px] leading-[1.8]"
+                      style={{ fontWeight: 400 }}
+                    >
+                      {selectedProject.desc}
+                    </p>
+                  </div>
+                ) : null}
+                {selectedProject.task ? (
+                  <div>
+                    <h4
+                      className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-3"
+                      style={{ fontWeight: 600 }}
+                    >
+                      {t("task")}
+                    </h4>
+                    <p
+                      className="text-[#555] text-[14px] leading-[1.8]"
+                      style={{ fontWeight: 400 }}
+                    >
+                      {selectedProject.task}
+                    </p>
+                  </div>
+                ) : null}
+                {selectedProject.solution ? (
+                  <div>
+                    <h4
+                      className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-3"
+                      style={{ fontWeight: 600 }}
+                    >
+                      {t("solution")}
+                    </h4>
+                    <p
+                      className="text-[#555] text-[14px] leading-[1.8]"
+                      style={{ fontWeight: 400 }}
+                    >
+                      {selectedProject.solution}
+                    </p>
+                  </div>
+                ) : null}
+                {selectedProject.result ? (
+                  <div>
+                    <h4
+                      className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-3"
+                      style={{ fontWeight: 600 }}
+                    >
+                      {t("results")}
+                    </h4>
+                    <p
+                      className="text-[#2E7D32] text-[14px] leading-[1.8]"
+                      style={{ fontWeight: 600 }}
+                    >
+                      {selectedProject.result}
+                    </p>
+                  </div>
+                ) : null}
               </div>
 
               {/* Photo placeholder */}
               <div className="mt-10 h-[200px] bg-[#f5f5f5] border border-dashed border-black/[0.08] flex items-center justify-center">
-              <img src={selectedProject.photo} className="h-full w-full object-cover" alt="" />
+                <img
+                  src={selectedProject.photo}
+                  className="h-full w-full object-cover"
+                  alt=""
+                />
                 {/* <div className="text-center">
                   <ExternalLink
                     size={20}
