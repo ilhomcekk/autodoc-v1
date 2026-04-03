@@ -6,7 +6,9 @@ import Team1 from "./team1.JPG";
 import BlackLogoHolding from "./blackLogoHolding.png";
 import Expansion from "./expansion.png";
 import IIV from "./iiv.jpg";
+import Contacts from './contact.png';
 // partners start
+import Partners from './partners/partners.png'; 
 import PoytaxtBank from "./partners/PoytaxtBank.png";
 import AloqaBank from "./partners/Aloqabank.png";
 import KapitalSugurta from "./partners/KapitalSugurta.png";
@@ -36,9 +38,9 @@ import MinistryHealth from "./partners/MinistryHealth.png";
 // partners end
 // projests start
 import AutoInfo from "./projects/autoInfo.jpeg";
-import DataAnalytics from "./projects/dataAnalytics.jpeg";
+import DataAnalytics from "./projects/dataAnalytics.png";
 import ElectronCash from "./projects/electronCash.jpg";
-import ID from "./projects/ID.jpg";
+import ID from "./projects/ID.png";
 import Queue from "./projects/queue.jpg";
 import RegisterTransport from "./projects/registerTransport.jpg";
 import SafeRoad from "./projects/safeRoad.jpg";
@@ -55,6 +57,7 @@ import Management1 from "./management/management1.jpg";
 import Management2 from "./management/management2.jpg";
 import Management3 from "./management/management3.jpg";
 import Management4 from "./management/management4.jpg";
+import Management5 from "./management/management5.png";
 // management end
 
 const images = {
@@ -65,7 +68,9 @@ const images = {
   Career,
   Team1,
   IIV,
+  Contacts,
   Expansion,
+  Partners,
   PoytaxtBank,
   AloqaBank,
   KapitalSugurta,
@@ -107,6 +112,7 @@ const images = {
   Management2,
   Management3,
   Management4,
+  Management5,
   FirstProject,
   EcoSticker,
   Infra,

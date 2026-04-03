@@ -58,13 +58,6 @@ export function AboutPage() {
     },
     {
       year: "2023",
-      title: t("expensionDirections"),
-      desc: t("expensionDirectionsDesc"),
-      detail: t("expensionDirectionsDetail"),
-      photo: images.SafeRoad,
-    },
-    {
-      year: "2023",
       title: t("governmentPrivatePartnership"),
       desc: t("governmentPrivatePartnershipDesc"),
       detail: t("governmentPrivatePartnershipDetail"),
@@ -76,6 +69,13 @@ export function AboutPage() {
       desc: t("infrastructureDevelopmentDesc"),
       detail: t("infrastructureDevelopmentDetail"),
       photo: images.Infra,
+    },
+    {
+      year: "2025",
+      title: t("expensionDirections"),
+      desc: t("expensionDirectionsDesc"),
+      detail: t("expensionDirectionsDetail"),
+      photo: images.SafeRoad,
     },
     {
       year: "2025",
@@ -120,6 +120,13 @@ export function AboutPage() {
       position: t("directorInformationTechnology"),
       bio: "Управляет финансовой стратегией холдинга, инвестиционными процессами и экономической эффективностью проектов. Обеспечивает финансовую устойчивость компании.",
       photo: images.Management4,
+    },
+    {
+      id: 5,
+      name: "Qobulov Zafar",
+      position: t("chiefFinancialOfficer"),
+      bio: "",
+      photo: images.Management5,
     },
   ];
   const [selectedLeader, setSelectedLeader] = useState<

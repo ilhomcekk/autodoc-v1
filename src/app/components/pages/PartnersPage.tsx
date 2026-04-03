@@ -93,8 +93,11 @@ export function PartnersPage() {
   return (
     <div>
       {/* ========== SECTION 1 — INTRO ========== */}
-      <section className="pt-[72px] bg-white">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 py-16 lg:py-24">
+      <section className="pt-[72px] relative">
+        <img src={images.Partners} className="absolute top-0 left-0 w-full h-full object-cover" alt="Partners" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/70 via-transparent to-[#0a0a0a]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/70 via-[#0a0a0a]/40 to-[#0a0a0a]"></div>
+        <div className="relative max-w-[1440px] mx-auto px-6 lg:px-12 py-16 lg:py-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -107,7 +110,7 @@ export function PartnersPage() {
               {t("ecosystem")}
             </span>
             <h1
-              className="text-[#1a1a1a] mb-6"
+              className="text-[#fff] mb-6"
               style={{
                 fontFamily: "Inter, sans-serif",
                 fontSize: "clamp(32px, 5vw, 60px)",

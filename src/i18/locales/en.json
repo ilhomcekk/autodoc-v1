@@ -146,7 +146,7 @@
   "safeRoadDesc": "Fine checking and payment application",
   "safeRoadTask": "Create a convenient service",
   "safeRoadSolution": "Mobile application",
-  "safeRoadResult": "2M+ users",
+  "safeRoadResult": "6M+ users",
   "recognitionSystem": "Automatic Data Recognition System",
   "recognitionSystemDesc": "AI-based document verification",
   "recognitionSystemTask": "Automation",
@@ -221,5 +221,6 @@
   "chairmanHolding": "Founder & Chairman of the Holding",
   "directorStrategy": "Director of Strategy",
   "investmentDirector": "Investment Director",
-  "directorInformationTechnology": "Director of Information Technology"
+  "directorInformationTechnology": "Director of Information Technology",
+  "chiefFinancialOfficer": "Chief Financial Officer"
 }

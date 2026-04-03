@@ -146,7 +146,7 @@
   "safeRoadDesc": "Jarimalarni tekshirish va to‘lash ilovasi",
   "safeRoadTask": "Qulay servis yaratish",
   "safeRoadSolution": "Mobil ilova",
-  "safeRoadResult": "2 mln+ foydalanuvchi",
+  "safeRoadResult": "6 mln+ foydalanuvchi",
   "recognitionSystem": "Ma’lumotlarni avtomatik aniqlash tizimi",
   "recognitionSystemDesc": "Hujjatlarni AI orqali tekshirish",
   "recognitionSystemTask": "Avtomatlashtirish",
@@ -221,5 +221,6 @@
   "chairmanHolding": "Xolding asoschisi va raisi",
   "directorStrategy": "Strategiya direktori",
   "investmentDirector": "Investitsiya direktori",
-  "directorInformationTechnology": "Axborot texnologiyalari direktori"
+  "directorInformationTechnology": "Axborot texnologiyalari direktori",
+  "chiefFinancialOfficer": "Moliyaviy direktor"
 }
