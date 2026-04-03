@@ -48,7 +48,9 @@ export function ProjectsPage() {
       desc: t("transportRegistrationSystemDesc"),
       category: "edo",
       task: t("transportRegistrationSystemTask"),
-      solution: t("transportRegistrationSystemSolution"),
+      solution: t("transportRegistrationSystemSolution", {
+        returnObjects: true,
+      }),
       result: t("transportRegistrationSystemResult"),
       photo: images.RegisterTransport,
     },
@@ -454,8 +456,17 @@ export function ProjectsPage() {
                       className="text-[#555] text-[14px] leading-[1.8]"
                       style={{ fontWeight: 400 }}
                     >
-                      {selectedProject.solution}
+                      {selectedProject.solution?.title}
                     </p>
+                    {selectedProject.solution?.items ? (
+                      <div className="mt-2">
+                        {selectedProject.solution?.items?.map((item, idx) => (
+                          <div className="ml-2 text-[#555] text-[14px]" key={idx}>
+                            — {item}
+                          </div>
+                        ))}
+                      </div>
+                    ) : null}
                   </div>
                 ) : null}
                 {selectedProject.result ? (

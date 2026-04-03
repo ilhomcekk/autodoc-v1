@@ -1,6 +1,8 @@
 import Logo from "./Autodoc grey2.svg";
 import LogoHolding from "./logoHolding.png";
 import AnonsVideo from "./anons.mp4";
+import AnonsUzVideo from "./anonsUz.mp4";
+import AnonsEngVideo from "./anonsEng.mp4";
 import Career from "./career.jpg";
 import Team1 from "./team1.JPG";
 import BlackLogoHolding from "./blackLogoHolding.png";
@@ -65,6 +67,8 @@ const images = {
   LogoHolding,
   BlackLogoHolding,
   AnonsVideo,
+  AnonsUzVideo,
+  AnonsEngVideo,
   Career,
   Team1,
   IIV,

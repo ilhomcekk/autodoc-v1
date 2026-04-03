@@ -127,11 +127,19 @@
   "electronicDocumentFlow": "Elektron hujjat aylanishi",
   "AIProjects": "AI loyihalar",
   "infrastructureProjects": "Infratuzilma loyihalari",
-  "transportRegistrationSystem": "Transport vositalarini ro‘yxatdan o‘tkazish tizimi",
-  "transportRegistrationSystemDesc": "Avtomobil va mototsikllarni ro‘yxatdan o‘tkazishning to‘liq raqamli tizimi",
-  "transportRegistrationSystemTask": "Yagona platforma yaratish",
-  "transportRegistrationSystemSolution": "Integratsiyalashgan tizim",
-  "transportRegistrationSystemResult": "Ro‘yxatdan o‘tish vaqti 70% ga qisqardi",
+  "transportRegistrationSystem": "Texnik ko‘rik va ro‘yxatdan o‘tkazish tizimi",
+  "transportRegistrationSystemDesc": "Avtotransport vositalarini ro‘yxatdan o‘tkazish va texnik ko‘rikdan o‘tkazish jarayonlarini to‘liq qamrab oluvchi raqamli tizim — ma’lumotlarni tekshirishdan tortib xizmatni yakunlashgacha.",
+  "transportRegistrationSystemTask": "Ro‘yxatdan o‘tkazish va texnik ko‘rik jarayonlarini soddalashtiruvchi va tezlashtiruvchi yagona raqamli platforma yaratish.",
+  "transportRegistrationSystemSolution": {
+    "title": "Quyidagi asosiy bosqichlarni o‘z ichiga olgan tizim joriy etildi:",
+    "items": [
+      "A-blok: jarimalarni avtomatik tekshirish",
+      "B-blok: elektron arizalarni rasmiylashtirish",
+      "elektron navbat tizimi",
+      "onlayn va oflayn to‘lov imkoniyati"
+    ]
+  },
+  "transportRegistrationSystemResult": "Xizmat ko‘rsatish vaqti qisqardi va jarayonlar shaffofligi oshdi",
   "systemEDO": "E-DO tizimi",
   "systemEDODesc": "Murojaatlarni boshqarish va taqsimlash tizimi",
   "systemEDOTask": "Jarayonlarni optimallashtirish",

@@ -36,7 +36,7 @@ function AnimatedSection({
 }
 
 export function HomePage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const partners = [
     images.PoytaxtBank,
     images.AloqaBank,
@@ -53,6 +53,11 @@ export function HomePage() {
     images.HamkorBank,
     images.AgroBank,
   ];
+  const videos = {
+    uz: images.AnonsUzVideo,
+    ru: images.AnonsVideo,
+    en: images.AnonsEngVideo,
+  };
   const [heroLoaded, setHeroLoaded] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [showVideoModal, setShowVideoModal] = useState(false);
@@ -279,7 +284,12 @@ export function HomePage() {
             >
               <span className="text-[18px]">&times;</span>
             </button>
-            <video src={images.AnonsVideo} controls></video>
+            <video
+              key={i18n.language}
+              // @ts-ignore
+              src={videos[i18n.language]}
+              controls
+            ></video>
             {/* <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-4 rounded-full border border-white/10 flex items-center justify-center">
                 <Play size={28} className="text-white/30 ml-1" />

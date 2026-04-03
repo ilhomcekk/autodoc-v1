@@ -127,11 +127,19 @@
   "electronicDocumentFlow": "Electronic Document Management",
   "AIProjects": "AI Projects",
   "infrastructureProjects": "Infrastructure Projects",
-  "transportRegistrationSystem": "Vehicle Registration System",
-  "transportRegistrationSystemDesc": "A fully digital system for registering cars and motorcycles",
-  "transportRegistrationSystemTask": "Create a unified platform",
-  "transportRegistrationSystemSolution": "Integrated system",
-  "transportRegistrationSystemResult": "Registration time reduced by 70%",
+  "transportRegistrationSystem": "Vehicle Inspection and Registration System",
+  "transportRegistrationSystemDesc": "A digital system for vehicle registration and technical inspection, covering the entire process — from data verification to service completion.",
+  "transportRegistrationSystemTask": "To create a unified digital platform that simplifies and accelerates registration and technical inspection processes.",
+  "transportRegistrationSystemSolution": {
+    "title": "An integrated system was implemented with key stages:",
+    "items": [
+      "A-block: automated fine verification",
+      "B-block: electronic application processing",
+      "electronic queue system",
+      "payment zone with online and offline options"
+    ]
+  },
+  "transportRegistrationSystemResult": "Reduced service time and improved process transparency",
   "systemEDO": "E-DO System",
   "systemEDODesc": "Application management and distribution system",
   "systemEDOTask": "Optimize processes",
