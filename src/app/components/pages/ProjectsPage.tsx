@@ -145,7 +145,7 @@ export function ProjectsPage() {
   const achievements = [
     { number: "99.2%", label: t("recognitionAccuracy") },
     { number: "10K+", label: t("documentsProcessedDaily") },
-    { number: "3M+", label: t("activeUsers") },
+    { number: "6M+", label: t("activeUsers") },
     { number: "50+", label: t("digitalCenters") },
   ];
   const [searchParams, setSearchParams] = useSearchParams();

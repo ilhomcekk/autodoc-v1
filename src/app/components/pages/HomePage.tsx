@@ -55,7 +55,7 @@ export function HomePage() {
   ];
   const videos = {
     uz: images.AnonsUzVideo,
-    ru: images.AnonsVideo,
+    ru: images.AnonsRuVideo,
     en: images.AnonsEngVideo,
   };
   const [heroLoaded, setHeroLoaded] = useState(false);

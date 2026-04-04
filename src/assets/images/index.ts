@@ -1,6 +1,6 @@
 import Logo from "./Autodoc grey2.svg";
 import LogoHolding from "./logoHolding.png";
-import AnonsVideo from "./anons.mp4";
+import AnonsRuVideo from "./anonsRu.mp4";
 import AnonsUzVideo from "./anonsUz.mp4";
 import AnonsEngVideo from "./anonsEng.mp4";
 import Career from "./career.jpg";
@@ -8,9 +8,9 @@ import Team1 from "./team1.JPG";
 import BlackLogoHolding from "./blackLogoHolding.png";
 import Expansion from "./expansion.png";
 import IIV from "./iiv.jpg";
-import Contacts from './contact.png';
+import Contacts from "./contact.png";
 // partners start
-import Partners from './partners/partners.png'; 
+import Partners from "./partners/partners.png";
 import PoytaxtBank from "./partners/PoytaxtBank.png";
 import AloqaBank from "./partners/Aloqabank.png";
 import KapitalSugurta from "./partners/KapitalSugurta.png";
@@ -37,6 +37,8 @@ import MinistryTransport from "./partners/MinistryTransport.png";
 import MinistryDigital from "./partners/MinistryDigital.png";
 import RoadTraffic from "./partners/roadTraffic.png";
 import MinistryHealth from "./partners/MinistryHealth.png";
+import DavrSmart from "./partners/DavrSmart.png";
+import InfinityPay from "./partners/InfinityPay.png";
 // partners end
 // projests start
 import AutoInfo from "./projects/autoInfo.jpeg";
@@ -66,7 +68,7 @@ const images = {
   Logo,
   LogoHolding,
   BlackLogoHolding,
-  AnonsVideo,
+  AnonsRuVideo,
   AnonsUzVideo,
   AnonsEngVideo,
   Career,
@@ -120,6 +122,8 @@ const images = {
   FirstProject,
   EcoSticker,
   Infra,
+  DavrSmart,
+  InfinityPay,
 };
 
 export default images;

@@ -75,6 +75,13 @@ export function PartnersPage() {
     images.MinistryHealth,
   ];
   const commercialPartners = [
+    "",
+    "",
+    images.DavrSmart,
+    "",
+    images.InfinityPay,
+    "",
+    "",
     images.PoytaxtBank,
     images.AloqaBank,
     images.KapitalSugurta,
@@ -94,7 +101,11 @@ export function PartnersPage() {
     <div>
       {/* ========== SECTION 1 — INTRO ========== */}
       <section className="pt-[72px] relative">
-        <img src={images.Partners} className="absolute top-0 left-0 w-full h-full object-cover" alt="Partners" />
+        <img
+          src={images.Partners}
+          className="absolute top-0 left-0 w-full h-full object-cover"
+          alt="Partners"
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/70 via-transparent to-[#0a0a0a]"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/70 via-[#0a0a0a]/40 to-[#0a0a0a]"></div>
         <div className="relative max-w-[1440px] mx-auto px-6 lg:px-12 py-16 lg:py-24">
@@ -249,7 +260,7 @@ export function PartnersPage() {
               {commercialPartners.map((partner, i) => (
                 <div
                   key={i}
-                  className="bg-white group hover:bg-[#f8faf8] transition-colors duration-300 flex items-center justify-center py-8 px-4"
+                  className={`bg-white group hover:bg-[#f8faf8] transition-colors duration-300 flex items-center justify-center py-8 px-4`}
                 >
                   <img src={partner} className="partner-black-image" alt="" />
                   {/* <span
