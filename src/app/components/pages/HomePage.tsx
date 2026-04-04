@@ -38,6 +38,14 @@ function AnimatedSection({
 export function HomePage() {
   const { t, i18n } = useTranslation();
   const partners = [
+    "",
+    "",
+    images.DavrSmart,
+    images.Vehicle,
+    ,
+    images.InfinityPay,
+    "",
+    "",
     images.PoytaxtBank,
     images.AloqaBank,
     images.KapitalSugurta,

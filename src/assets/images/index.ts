@@ -39,6 +39,7 @@ import RoadTraffic from "./partners/roadTraffic.png";
 import MinistryHealth from "./partners/MinistryHealth.png";
 import DavrSmart from "./partners/DavrSmart.png";
 import InfinityPay from "./partners/InfinityPay.png";
+import Vehicle from './partners/Vehicle.svg';
 // partners end
 // projests start
 import AutoInfo from "./projects/autoInfo.jpeg";
@@ -105,6 +106,7 @@ const images = {
   MinistryHealth,
   AutoInfo,
   DataAnalytics,
+  Vehicle,
   ElectronCash,
   ID,
   Queue,

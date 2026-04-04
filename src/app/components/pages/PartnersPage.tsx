@@ -78,7 +78,7 @@ export function PartnersPage() {
     "",
     "",
     images.DavrSmart,
-    "",
+    images.Vehicle,,
     images.InfinityPay,
     "",
     "",
