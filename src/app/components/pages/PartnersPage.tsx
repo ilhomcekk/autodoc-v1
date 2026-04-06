@@ -94,6 +94,7 @@ export function PartnersPage() {
     images.IpakYoliBank,
     images.UzTelecom,
     images.CyberPark,
+    images.ASBT
   ]
   // const commercialPartners = [
   //   "",
@@ -282,9 +283,9 @@ export function PartnersPage() {
               {commercialPartners.map((partner, i) => (
                 <div
                   key={i}
-                  className={`bg-white group hover:bg-[#f8faf8] transition-colors duration-300 flex items-center justify-center py-8 px-4`}
+                  className={`bg-white h-[120px] group hover:bg-[#f8faf8] transition-colors duration-300 flex items-center justify-center py-8 px-4`}
                 >
-                  <img src={partner} className="" alt="" />
+                  <img src={partner} className="h-[60%]" alt="" />
                   {/* <span
                     className="text-[12px] tracking-[0.1em] uppercase text-[#999] group-hover:text-[#2E7D32] transition-colors duration-300 text-center"
                     style={{ fontWeight: 600 }}

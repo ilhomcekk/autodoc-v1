@@ -49,6 +49,7 @@ export function HomePage() {
     images.IpakYoliBank,
     images.UzTelecom,
     images.CyberPark,
+    images.ASBT,
   ]
   const videos = {
     uz: images.AnonsUzVideo,
@@ -544,9 +545,9 @@ export function HomePage() {
               {partners.map((partner, i) => (
                 <div
                   key={i}
-                  className="bg-white flex items-center justify-center py-6 sm:py-8 px-4 group hover:bg-[#f5f7f5] transition-colors duration-300"
+                  className="bg-white h-[120px] flex items-center justify-center py-6 sm:py-8 px-4 group hover:bg-[#f5f7f5] transition-colors duration-300"
                 >
-                  <img src={partner} className="" alt="" />
+                  <img src={partner} className="h-[70%]" alt="" />
                   {/* <span
                     className="text-[12px] sm:text-[13px] tracking-[0.12em] uppercase text-[#999] group-hover:text-[#2E7D32] transition-colors duration-300"
                     style={{ fontWeight: 600 }}

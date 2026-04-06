@@ -50,7 +50,7 @@ import SmartBank from "./partners/commercial/SmartBank.svg";
 import UniversalBank from "./partners/commercial/UniversalBank.svg";
 import MyBank from "./partners/commercial/MyBank.svg";
 import IpakYoliBank from "./partners/commercial/IpakYoliBank.svg";
-// import ASBT from './partners/commercial/';
+import ASBT from './partners/commercial/ASBT.svg';
 import UzTelecom from "./partners/commercial/UzTelecom.svg";
 import CyberPark from "./partners/commercial/CyberPark.svg";
 // commercial partners end
@@ -160,6 +160,7 @@ const images = {
   UniversalBank,
   UzTelecom,
   WorldPay,
+  ASBT,
   // state partners
   AdliyaVazirligi,
   Gai,
