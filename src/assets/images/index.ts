@@ -7,22 +7,22 @@ import Career from "./career.jpg";
 import Team1 from "./team1.JPG";
 import BlackLogoHolding from "./blackLogoHolding.png";
 import Expansion from "./expansion.png";
-import IIV from "./iiv.jpg";
+// import IIV from "./iiv.jpg";
 import Contacts from "./contact.png";
 // partners start
 import Partners from "./partners/partners.png";
 import PoytaxtBank from "./partners/PoytaxtBank.png";
-import AloqaBank from "./partners/Aloqabank.png";
+// import AloqaBank from "./partners/Aloqabank.png";
 import KapitalSugurta from "./partners/KapitalSugurta.png";
 import MikrokreditBank from "./partners/Mikrokreditbank.png";
-import UniversalBank from "./partners/Universalbank.png";
+// import UniversalBank from "./partners/Universalbank.png";
 import Beeline from "./partners/Beeline.png";
 import Abozor from "./partners/Abozor.png";
 import OrientFinansBank from "./partners/OrientFinansbank.png";
 import kapitalBank from "./partners/Kapitalbank.png";
 import Uztelecom from "./partners/Uztelecom.png";
 import XalqBank from "./partners/Xalqbanki.png";
-import SmartBank from "./partners/Smartbank.png";
+// import SmartBank from "./partners/Smartbank.png";
 import HamkorBank from "./partners/Hamkorbank.png";
 import AgroBank from "./partners/Agrobank.png";
 import MinistryTourism from "./partners/MinistryTourism.png";
@@ -39,7 +39,29 @@ import RoadTraffic from "./partners/roadTraffic.png";
 import MinistryHealth from "./partners/MinistryHealth.png";
 import DavrSmart from "./partners/DavrSmart.png";
 import InfinityPay from "./partners/InfinityPay.png";
-import Vehicle from './partners/Vehicle.svg';
+import Vehicle from "./partners/Vehicle.svg";
+// commercial partners start
+import ExpressPay from "./partners/commercial/ExpressPay.svg";
+import WorldPay from "./partners/commercial/WorldPay.svg";
+import OrientIT from "./partners/commercial/ORIENT-IT.svg";
+import Paynet from "./partners/commercial/Paynet.svg";
+import AloqaBank from "./partners/commercial/AloqaBank.svg";
+import SmartBank from "./partners/commercial/SmartBank.svg";
+import UniversalBank from "./partners/commercial/UniversalBank.svg";
+import MyBank from "./partners/commercial/MyBank.svg";
+import IpakYoliBank from "./partners/commercial/IpakYoliBank.svg";
+// import ASBT from './partners/commercial/';
+import UzTelecom from "./partners/commercial/UzTelecom.svg";
+import CyberPark from "./partners/commercial/CyberPark.svg";
+// commercial partners end
+// state partners start
+import IIV from "./partners/state/IIV.svg";
+import AdliyaVazirligi from "./partners/state/AdliyaVazirligi.svg";
+import Gai from "./partners/state/Gai.svg";
+import Ovir from "./partners/state/Ovir.svg";
+import TemirYol from "./partners/state/TemirYol.svg";
+import MinTrans from "./partners/state/MinTrans.svg";
+// state partners end
 // partners end
 // projests start
 import AutoInfo from "./projects/autoInfo.jpeg";
@@ -79,17 +101,17 @@ const images = {
   Expansion,
   Partners,
   PoytaxtBank,
-  AloqaBank,
+  // AloqaBank,
   KapitalSugurta,
   MikrokreditBank,
-  UniversalBank,
+  // UniversalBank,
   Beeline,
   Abozor,
   OrientFinansBank,
   kapitalBank,
   Uztelecom,
   XalqBank,
-  SmartBank,
+  // SmartBank,
   HamkorBank,
   AgroBank,
   MinistryTourism,
@@ -126,6 +148,24 @@ const images = {
   Infra,
   DavrSmart,
   InfinityPay,
+  // commercial partners
+  AloqaBank,
+  CyberPark,
+  ExpressPay,
+  IpakYoliBank,
+  MyBank,
+  OrientIT,
+  Paynet,
+  SmartBank,
+  UniversalBank,
+  UzTelecom,
+  WorldPay,
+  // state partners
+  AdliyaVazirligi,
+  Gai,
+  Ovir,
+  TemirYol,
+  MinTrans,
 };
 
 export default images;

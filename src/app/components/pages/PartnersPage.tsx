@@ -74,29 +74,51 @@ export function PartnersPage() {
     images.RoadTraffic,
     images.MinistryHealth,
   ];
-  const commercialPartners = [
-    "",
-    "",
-    images.DavrSmart,
-    images.Vehicle,,
-    images.InfinityPay,
-    "",
-    "",
-    images.PoytaxtBank,
-    images.AloqaBank,
-    images.KapitalSugurta,
-    images.MikrokreditBank,
-    images.UniversalBank,
-    images.Beeline,
-    images.Abozor,
-    images.OrientFinansBank,
-    images.kapitalBank,
-    images.Uztelecom,
-    images.XalqBank,
-    images.SmartBank,
-    images.HamkorBank,
-    images.AgroBank,
+  const statePartners = [
+    images.IIV,
+    images.AdliyaVazirligi,
+    images.Gai,
+    images.Ovir,
+    images.TemirYol,
+    images.MinTrans,
   ];
+  const commercialPartners = [
+    images.ExpressPay,
+    images.WorldPay,
+    images.OrientIT,
+    images.Paynet,
+    images.AloqaBank,
+    images.SmartBank,
+    images.UniversalBank,
+    images.MyBank,
+    images.IpakYoliBank,
+    images.UzTelecom,
+    images.CyberPark,
+  ]
+  // const commercialPartners = [
+  //   "",
+  //   "",
+  //   images.DavrSmart,
+  //   images.Vehicle,
+  //   ,
+  //   images.InfinityPay,
+  //   "",
+  //   "",
+  //   images.PoytaxtBank,
+  //   images.AloqaBank,
+  //   images.KapitalSugurta,
+  //   images.MikrokreditBank,
+  //   images.UniversalBank,
+  //   images.Beeline,
+  //   images.Abozor,
+  //   images.OrientFinansBank,
+  //   images.kapitalBank,
+  //   images.Uztelecom,
+  //   images.XalqBank,
+  //   images.SmartBank,
+  //   images.HamkorBank,
+  //   images.AgroBank,
+  // ];
   return (
     <div>
       {/* ========== SECTION 1 — INTRO ========== */}
@@ -180,14 +202,14 @@ export function PartnersPage() {
           </AnimatedSection>
 
           <AnimatedSection delay={0.15}>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[1px] bg-black/[0.04]">
-              {governmentPartners.map((partner, i) => (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-[1px] bg-black/[0.04]">
+              {statePartners.map((partner, i) => (
                 <div
                   key={i}
                   className="bg-white group hover:bg-[#f8faf8] transition-colors duration-300"
                 >
                   <div className="flex items-center justify-center py-10 px-6 min-h-[120px]">
-                    <div className="text-center">
+                    <div className="h-full w-full text-center">
                       {/* <div className="w-14 h-14 mx-auto mb-3 bg-[#f5f7f5] border border-[#e8ece8] flex items-center justify-center group-hover:border-[#2E7D32]/20 group-hover:bg-[#eef5ee] transition-all duration-300">
                         <span
                           className="text-[#2E7D32]/40 text-[16px]"
@@ -200,7 +222,7 @@ export function PartnersPage() {
                         </span>
                       </div> */}
                       <img
-                        className="partner-black-image"
+                        className=""
                         src={partner}
                         alt=""
                       />
@@ -256,13 +278,13 @@ export function PartnersPage() {
           </AnimatedSection>
 
           <AnimatedSection delay={0.15}>
-            <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-[1px] bg-black/[0.04]">
+            <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-[1px] bg-black/[0.04]">
               {commercialPartners.map((partner, i) => (
                 <div
                   key={i}
                   className={`bg-white group hover:bg-[#f8faf8] transition-colors duration-300 flex items-center justify-center py-8 px-4`}
                 >
-                  <img src={partner} className="partner-black-image" alt="" />
+                  <img src={partner} className="" alt="" />
                   {/* <span
                     className="text-[12px] tracking-[0.1em] uppercase text-[#999] group-hover:text-[#2E7D32] transition-colors duration-300 text-center"
                     style={{ fontWeight: 600 }}
