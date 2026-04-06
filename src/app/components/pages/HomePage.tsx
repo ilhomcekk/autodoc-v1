@@ -38,29 +38,18 @@ function AnimatedSection({
 export function HomePage() {
   const { t, i18n } = useTranslation();
   const partners = [
-    "",
-    "",
-    images.DavrSmart,
-    images.Vehicle,
-    ,
-    images.InfinityPay,
-    "",
-    "",
-    images.PoytaxtBank,
+    images.ExpressPay,
+    images.WorldPay,
+    images.OrientIT,
+    images.Paynet,
     images.AloqaBank,
-    images.KapitalSugurta,
-    images.MikrokreditBank,
-    images.UniversalBank,
-    images.Beeline,
-    images.Abozor,
-    images.OrientFinansBank,
-    images.kapitalBank,
-    images.Uztelecom,
-    images.XalqBank,
     images.SmartBank,
-    images.HamkorBank,
-    images.AgroBank,
-  ];
+    images.UniversalBank,
+    images.MyBank,
+    images.IpakYoliBank,
+    images.UzTelecom,
+    images.CyberPark,
+  ]
   const videos = {
     uz: images.AnonsUzVideo,
     ru: images.AnonsRuVideo,
@@ -551,13 +540,13 @@ export function HomePage() {
           </AnimatedSection>
 
           <AnimatedSection delay={0.2}>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-[1px] bg-black/[0.04]">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-[1px] bg-black/[0.04]">
               {partners.map((partner, i) => (
                 <div
                   key={i}
                   className="bg-white flex items-center justify-center py-6 sm:py-8 px-4 group hover:bg-[#f5f7f5] transition-colors duration-300"
                 >
-                  <img src={partner} className="partner-black-image" alt="" />
+                  <img src={partner} className="" alt="" />
                   {/* <span
                     className="text-[12px] sm:text-[13px] tracking-[0.12em] uppercase text-[#999] group-hover:text-[#2E7D32] transition-colors duration-300"
                     style={{ fontWeight: 600 }}
