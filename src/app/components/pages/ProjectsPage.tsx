@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { useRef, useEffect, useMemo } from "react";
+import { ChevronRight } from "lucide-react";
 import { useSearchParams } from "react-router";
 import { motion, useInView } from "motion/react";
 import { X, ArrowUpRight, ExternalLink } from "lucide-react";
@@ -36,17 +37,163 @@ function AnimatedSection({
 export function ProjectsPage() {
   const { t } = useTranslation();
   const filters = [
-    { key: "all", label: t("all") },
-    { key: "edo", label: t("electronicDocumentFlow") },
-    { key: "ai", label: t("AIProjects") },
-    { key: "infra", label: t("infrastructureProjects") },
+    { key: "technology", label: t("InformationTechnology") },
+    { key: "paymentSystems", label: t("PaymentSystems") },
+    { key: "energy", label: t("Energy") },
+    { key: "industry", label: t("Industry") },
+    { key: "finance", label: t("Finance") },
+    { key: "insurance", label: t("Insurance") },
+    { key: "investment", label: t("InvestmentAndConsulting") },
+    { key: "transport", label: t("Transport") },
+    { key: "logistics", label: t("Logistics") },
+    { key: "infra", label: t("Infrastructure") },
+    { key: "arti", label: t("ArtificialIntelligenceAndDataAnalytics") },
+    {
+      key: "electron",
+      label: t("ElectronicDocumentManagementAndGovernmentDigitalServices"),
+    },
   ];
   const projects = [
     {
       id: 1,
       title: t("transportRegistrationSystem"),
       desc: t("transportRegistrationSystemDesc"),
-      category: "edo",
+      category: "technology",
+      task: t("transportRegistrationSystemTask"),
+      solution: t("transportRegistrationSystemSolution", {
+        returnObjects: true,
+      }),
+      result: t("transportRegistrationSystemResult"),
+      photo: images.RegisterTransport,
+    },
+    {
+      id: 4,
+      title: t("justRiseGroup"),
+      desc: t("justRiseGroupDesc"),
+      category: "technology",
+      photo: images.JustRiseGroup,
+    },
+    {
+      id: 4,
+      title: t("safeRoadYHXX"),
+      desc: t("safeRoadYHXXDesc"),
+      category: "technology",
+      task: t("safeRoadTask"),
+      solution: t("safeRoadSolution"),
+      result: t("safeRoadResult"),
+      photo: images.SafeRoad,
+    },
+    {
+      id: 4,
+      title: t("maxsusAloqa"),
+      desc: t("maxsusAloqaDesc"),
+      category: "technology",
+      photo: images.MaxsusAloqa,
+    },
+    {
+      id: 4,
+      title: t("infinityPay"),
+      desc: t("infinityPayDesc"),
+      category: "paymentSystems",
+      photo: images.InfinityPayProject,
+    },
+    {
+      id: 4,
+      title: t("expressPay"),
+      desc: t("expressPayDesc"),
+      category: "paymentSystems",
+      photo: images.ExpressPayProject,
+    },
+    {
+      id: 4,
+      title: t("worldPay"),
+      desc: t("worldPayDesc"),
+      category: "paymentSystems",
+      photo: images.WorldPayProject,
+    },
+    {
+      id: 4,
+      title: t("fincore"),
+      desc: t("fincoreDesc"),
+      category: "paymentSystems",
+      photo: images.Fincore,
+    },
+    {
+      id: 4,
+      title: t("uet"),
+      desc: t("uetDesc"),
+      category: "energy",
+      photo: images.UET,
+    },
+    {
+      id: 4,
+      title: t("maxsusElectrTarmoqQurilish"),
+      desc: t("maxsusElectrTarmoqQurilishDesc"),
+      category: "energy",
+      photo: images.MaxsusElectrTarmoqQurilish,
+    },
+    {
+      id: 4,
+      title: t("ozbekEnergoTamir"),
+      desc: t("ozbekEnergoTamirDesc"),
+      category: "energy",
+      photo: images.OzbekEnergoTamir,
+    },
+    {
+      id: 4,
+      title: t("uzEnergoEngineering"),
+      desc: t("uzEnergoEngineeringDesc"),
+      category: "energy",
+      photo: images.UzEnergoEngineering,
+    },
+    {
+      id: 4,
+      title: t("smartIntegrityMe"),
+      desc: t("smartIntegrityMeDesc"),
+      category: "energy",
+      photo: images.SmartIntegrityMe,
+    },
+    {
+      id: 4,
+      title: t("ozEnergoSozlash"),
+      desc: t("ozEnergoSozlashDesc"),
+      category: "energy",
+      photo: images.OzEnergoSozlash,
+    },
+    {
+      id: 4,
+      title: t("chirchiq"),
+      desc: t("chirchiqDesc"),
+      category: "industry",
+      photo: images.ChirchiqMetallKonstruksiyalariZavodi,
+    },
+    {
+      id: 4,
+      title: t("technoCableGroup"),
+      desc: t("technoCableGroupDesc"),
+      category: "industry",
+      photo: images.TechnoCableGroup,
+    },
+    {
+      id: 4,
+      title: t("fozumur"),
+      desc: t("fozumurDesc"),
+      category: "finance",
+      photo: images.Fozumur,
+    },
+    {
+      id: 4,
+      title: t("finix"),
+      desc: t("finixDesc"),
+      category: "insurance",
+      photo: images.Finix,
+    },
+    // ===============================
+    {
+      id: 1,
+      title: t("transportRegistrationSystem"),
+      desc: t("transportRegistrationSystemDesc"),
+      category: "electron",
       task: t("transportRegistrationSystemTask"),
       solution: t("transportRegistrationSystemSolution", {
         returnObjects: true,
@@ -58,7 +205,7 @@ export function ProjectsPage() {
       id: 2,
       title: t("systemEDO"),
       desc: t("systemEDODesc"),
-      category: "edo",
+      category: "electron",
       task: t("systemEDOTask"),
       solution: t("systemEDOSolution"),
       result: t("systemEDOResult"),
@@ -68,41 +215,97 @@ export function ProjectsPage() {
       id: 3,
       title: t("registerIDCards"),
       desc: t("registerIDCardsDesc"),
-      category: "edo",
+      category: "electron",
       task: t("registerIDCardsTask"),
       solution: t("registerIDCardsSolution"),
       result: t("registerIDCardsResult"),
       photo: images.ID,
     },
+    // {
+    //   id: 6,
+    //   title: t("analyticsSystem"),
+    //   desc: t("analyticsSystemDesc"),
+    //   category: "technology",
+    //   task: t("analyticsSystemTask"),
+    //   solution: t("analyticsSystemSolution"),
+    //   result: t("analyticsSystemResult"),
+    //   photo: images.DataAnalytics,
+    // },
+    // {
+    //   id: 8,
+    //   title: t("serviceSystem"),
+    //   desc: t("serviceSystemDesc"),
+    //   category: "technology",
+    //   task: t("serviceSystemTask"),
+    //   solution: t("serviceSystemSolution"),
+    //   result: t("serviceSystemResult"),
+    //   photo: images.Queue,
+    // },
     {
-      id: 4,
-      title: t("safeRoad"),
-      desc: t("safeRoadDesc"),
-      category: "infra",
-      task: t("safeRoadTask"),
-      solution: t("safeRoadSolution"),
-      result: t("safeRoadResult"),
-      photo: images.SafeRoad,
+      id: 9,
+      title: t("digitalServiceSystem"),
+      desc: t("digitalServiceSystemDesc"),
+      category: "electron",
+      task: t("digitalServiceSystemTask"),
+      solution: t("digitalServiceSystemSolution"),
+      result: t("digitalServiceSystemResult"),
+      photo: images.Kassa,
     },
     {
-      id: 5,
-      title: t("recognitionSystem"),
-      desc: t("recognitionSystemDesc"),
-      category: "ai",
-      task: t("recognitionSystemTask"),
-      solution: t("recognitionSystemSolution"),
-      result: t("recognitionSystemResult"),
-      photo: images.AutoInfo,
+      id: 10,
+      title: t("uetInvest"),
+      desc: t("uetInvestDesc"),
+      category: "investment",
+      photo: images.UETInvest,
     },
     {
-      id: 6,
-      title: t("analyticsSystem"),
-      desc: t("analyticsSystemDesc"),
-      category: "ai",
-      task: t("analyticsSystemTask"),
-      solution: t("analyticsSystemSolution"),
-      result: t("analyticsSystemResult"),
-      photo: images.DataAnalytics,
+      id: 10,
+      title: t("uetConsulting"),
+      desc: t("uetConsultingDesc"),
+      category: "investment",
+      photo: images.UETConsulting,
+    },
+    {
+      id: 10,
+      title: t("davrSmart"),
+      desc: t("davrSmartDesc"),
+      category: "transport",
+      photo: images.DavrSmartProject,
+    },
+    {
+      id: 10,
+      title: t("avtoTexnikKorik"),
+      desc: t("avtoTexnikKorikDesc"),
+      category: "transport",
+      photo: images.AvtoTexnikKorik,
+    },
+    {
+      id: 10,
+      title: t("vehicleService"),
+      desc: t("vehicleServiceDesc"),
+      category: "transport",
+      photo: images.VehicleService,
+    },
+    {
+      id: 10,
+      title: t("orientIt"),
+      desc: t("orientItDesc"),
+      category: "transport",
+      photo: images.OrientIt,
+    },
+    {
+      id: 10,
+      title: t("centrumLogistics"),
+      desc: t("centrumLogisticsDesc"),
+      category: "logistics",
+      photo: images.CentrumLogistics,
+    },
+    {
+      id: 10,
+      title: t("centrumAir"),
+      desc: t("centrumAirDesc"),
+      category: "logistics",
+      photo: images.CentrumAir,
     },
     {
       id: 7,
@@ -115,31 +318,35 @@ export function ProjectsPage() {
       photo: images.ElectronCash,
     },
     {
-      id: 8,
-      title: t("serviceSystem"),
-      desc: t("serviceSystemDesc"),
+      id: 10,
+      title: t("sayyor"),
+      desc: t("sayyorDesc"),
       category: "infra",
-      task: t("serviceSystemTask"),
-      solution: t("serviceSystemSolution"),
-      result: t("serviceSystemResult"),
-      photo: images.Queue,
-    },
-    {
-      id: 9,
-      title: t("digitalServiceSystem"),
-      desc: t("digitalServiceSystemDesc"),
-      category: "infra",
-      task: t("digitalServiceSystemTask"),
-      solution: t("digitalServiceSystemSolution"),
-      result: t("digitalServiceSystemResult"),
-      photo: images.Kassa,
+      photo: images.Sayyor,
     },
     {
       id: 10,
       title: t("ecoSticker"),
-      desc: t("ecoStickerDetail"),
+      desc: t("ecoStickerDesc"),
       category: "infra",
-      photo: images.EcoSticker,
+      photo: images.EcologicTransport,
+    },
+    {
+      id: 5,
+      title: t("recognitionSystem"),
+      desc: t("recognitionSystemDesc"),
+      category: "arti",
+      task: t("recognitionSystemTask"),
+      solution: t("recognitionSystemSolution"),
+      result: t("recognitionSystemResult"),
+      photo: images.AutoInfo,
+    },
+    {
+      id: 5,
+      title: t("malumotlarniQaytaIshlash"),
+      desc: t("malumotlarniQaytaIshlashDesc"),
+      category: "arti",
+      photo: images.MalumotlarniQaytaIshlash,
     },
   ];
   const achievements = [
@@ -150,14 +357,77 @@ export function ProjectsPage() {
   ];
   const [searchParams, setSearchParams] = useSearchParams();
   const activeFilter = searchParams.get("filter") || "all";
-  const [selectedProject, setSelectedProject] = useState<
-    (typeof projects)[0] | null
-  >(null);
+  const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const isManualScroll = useRef(false);
 
-  const filteredProjects =
-    activeFilter === "all"
-      ? projects
-      : projects.filter((p) => p.category === activeFilter);
+  const categories = useMemo(
+    () =>
+      filters
+        .filter((f) => f.key !== "all")
+        .map((filter) => ({
+          ...filter,
+          projects: projects.filter((p) => p.category === filter.key),
+        })),
+    [filters, projects],
+  );
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (isManualScroll.current) return;
+
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (!visible) return;
+
+        const key = visible.target.getAttribute("data-category");
+
+        if (!key) return;
+
+        setSearchParams(key === "all" ? {} : { filter: key }, {
+          replace: true,
+        });
+      },
+      {
+        threshold: [0.2, 0.4, 0.6, 0.8],
+        rootMargin: "-120px 0px -45% 0px",
+      },
+    );
+
+    Object.values(sectionRefs.current).forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [setSearchParams]);
+
+  const scrollToCategory = (key: string) => {
+    isManualScroll.current = true;
+
+    if (key === "all") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    } else {
+      const el = sectionRefs.current[key];
+
+      if (el) {
+        window.scrollTo({
+          top: el.offsetTop - 100,
+          behavior: "smooth",
+        });
+      }
+    }
+
+    setSearchParams(key === "all" ? {} : { filter: key }, { replace: true });
+
+    setTimeout(() => {
+      isManualScroll.current = false;
+    }, 700);
+  };
 
   return (
     <div>
@@ -209,93 +479,112 @@ export function ProjectsPage() {
       </section>
 
       {/* ========== SECTION 2 — КАТАЛОГ ПРОЕКТОВ ========== */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section
+        ref={(el) => {
+          sectionRefs.current[scrollToCategory.key] = el;
+        }}
+        data-category={scrollToCategory.key}
+        className="py-16 lg:py-24 bg-white"
+      >
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
-          {/* Filters */}
-          <AnimatedSection>
-            <div className="flex flex-wrap gap-2 mb-16 border-b border-black/[0.06] pb-6">
-              {filters.map((f) => (
-                <button
-                  key={f.key}
-                  onClick={() =>
-                    setSearchParams(f.key === "all" ? {} : { filter: f.key })
-                  }
-                  className={`px-5 py-2.5 text-[12px] tracking-[0.04em] transition-all duration-300 ${
-                    activeFilter === f.key
-                      ? "bg-[#1a1a1a] text-white"
-                      : "bg-transparent text-[#888] hover:text-[#1a1a1a] hover:bg-[#f5f5f5]"
-                  }`}
-                  style={{ fontWeight: 500 }}
+          <div className="grid lg:grid-cols-[260px_1fr] gap-20">
+            {/* Sidebar */}
+            <AnimatedSection>
+              <aside className="sticky top-28 hidden lg:block h-fit">
+                <div className="">
+                  {filters.map((filter) => (
+                    <button
+                      key={filter.key}
+                      onClick={() => scrollToCategory(filter.key)}
+                      className={`group w-full flex items-center justify-between py-3 border-b border-black/5 transition-all
+                ${
+                  activeFilter === filter.key
+                    ? "text-[#1B5E20]"
+                    : "text-[#777] hover:text-black"
+                }`}
+                    >
+                      <span className="text-[15px] text-left">
+                        {filter.label}
+                      </span>
+
+                      <ChevronRight
+                        size={18}
+                        className={`flex-none transition-all duration-300 ${
+                          activeFilter === filter.key
+                            ? "translate-x-1 text-[#1B5E20]"
+                            : "group-hover:translate-x-1"
+                        }`}
+                      />
+                    </button>
+                  ))}
+                </div>
+              </aside>
+            </AnimatedSection>
+
+            {/* Projects */}
+            <div>
+              {categories.map((category) => (
+                <section
+                  key={category.key}
+                  data-category={category.key}
+                  ref={(el) => (sectionRefs.current[category.key] = el)}
+                  className="mb-28 scroll-mt-28"
                 >
-                  {f.label}
-                </button>
+                  <AnimatedSection>
+                    <div className="flex items-center justify-between mb-10">
+                      <div>
+                        <span className="uppercase text-[11px] tracking-[0.3em] text-[#2E7D32]">
+                          {category.label}
+                        </span>
+
+                        {/* <h2 className="text-3xl font-bold mt-2">
+                          {category.label}
+                        </h2> */}
+                      </div>
+                    </div>
+                  </AnimatedSection>
+
+                  <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    {category.projects.map((project, i) => (
+                      <AnimatedSection key={project.i} delay={i * 0.08}>
+                        <div className="group cursor-pointer bg-[#fafafa] border border-black/5 hover:border-[#2E7D32]/20 transition-all duration-500">
+                          <div className="relative h-[220px] overflow-hidden bg-[#eef2ee]">
+                            <img
+                              src={project.photo}
+                              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            />
+
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all" />
+
+                            <ArrowUpRight
+                              size={18}
+                              className="absolute top-5 right-5 opacity-0 group-hover:opacity-100 text-white transition-all"
+                            />
+                          </div>
+
+                          <div className="p-4">
+                            {/* <span className="text-[11px] uppercase tracking-[0.2em] text-[#2E7D32]">
+                              {category.label}
+                            </span> */}
+
+                            <h3 className="text-lg font-semibold mb-2 group-hover:text-[#1B5E20] transition-colors">
+                              {project.title}
+                            </h3>
+
+                            <p className="text-[#777] leading-7 text-sm">
+                              {project.desc}
+                              {/* {project.desc.length > 120
+                                ? project.desc.slice(0, 120) + "..."
+                                : project.desc} */}
+                            </p>
+                          </div>
+                        </div>
+                      </AnimatedSection>
+                    ))}
+                  </div>
+                </section>
               ))}
             </div>
-          </AnimatedSection>
-
-          {/* Project Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {filteredProjects.map((project, i) => (
-              <AnimatedSection key={project.id} delay={i * 0.08}>
-                <div
-                  className="group cursor-pointer bg-[#fafafa] border border-black/[0.04] hover:border-[#2E7D32]/15 hover:bg-[#f8faf8] transition-all duration-500"
-                  onClick={() => setSelectedProject(project)}
-                >
-                  {/* Project Image Placeholder */}
-                  <div className="h-[200px] bg-gradient-to-br from-[#e8ece8] to-[#dde3dd] relative overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <img src={project.photo} alt="" />
-                      {/* <div className="w-12 h-12 border border-white/40 flex items-center justify-center">
-                        <span
-                          className="text-white/60 text-[18px]"
-                          style={{
-                            fontFamily: "Inter, sans-serif",
-                            fontWeight: 700,
-                          }}
-                        >
-                          {String(project.id).padStart(2, "0")}
-                        </span>
-                      </div> */}
-                    </div>
-                    <div className="absolute inset-0 bg-[#1B5E20]/0 group-hover:bg-[#1B5E20]/10 transition-colors duration-500" />
-                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <ArrowUpRight size={18} className="text-[#2E7D32]" />
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span
-                        className="text-[10px] tracking-[0.15em] uppercase text-[#2E7D32]/60 px-2 py-0.5 bg-[#2E7D32]/[0.06]"
-                        style={{ fontWeight: 600 }}
-                      >
-                        {filters.find((f) => f.key === project.category)
-                          ?.label || t("project")}
-                      </span>
-                    </div>
-                    <h3
-                      className="text-[#1a1a1a] mb-3 group-hover:text-[#1B5E20] transition-colors duration-300"
-                      style={{
-                        fontSize: "16px",
-                        fontWeight: 600,
-                        lineHeight: 1.4,
-                      }}
-                    >
-                      {project.title}
-                    </h3>
-                    <p
-                      className="text-[#888] text-[13px] leading-[1.7]"
-                      style={{ fontWeight: 400 }}
-                    >
-                      {project.desc.length > 120
-                        ? project.desc.slice(0, 120) + "..."
-                        : project.desc}
-                    </p>
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
           </div>
         </div>
       </section>
@@ -354,163 +643,6 @@ export function ProjectsPage() {
           </div>
         </div>
       </section>
-
-      {/* ========== PROJECT DETAIL MODAL ========== */}
-      {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-            onClick={() => setSelectedProject(null)}
-          />
-          <motion.div
-            initial={{ opacity: 0, scale: 0.97, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.35 }}
-            className="relative bg-white w-full max-w-[880px] max-h-[90vh] overflow-y-auto shadow-2xl"
-          >
-            <button
-              onClick={() => setSelectedProject(null)}
-              className="absolute top-5 right-5 w-10 h-10 flex items-center justify-center hover:bg-black/[0.04] transition-colors z-10"
-            >
-              <X size={18} />
-            </button>
-
-            {/* Hero area */}
-            <div className="h-[240px] bg-gradient-to-br from-[#1B5E20] to-[#0a0a0a] flex items-center justify-center relative">
-              <span
-                className="text-white/10"
-                style={{
-                  fontFamily: "Inter, sans-serif",
-                  fontSize: "120px",
-                  fontWeight: 900,
-                  lineHeight: 1,
-                }}
-              >
-                {String(selectedProject.id).padStart(2, "0")}
-              </span>
-              <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent" />
-            </div>
-
-            <div className="p-8 lg:p-12 -mt-12 relative">
-              <span
-                className="text-[10px] tracking-[0.2em] uppercase text-[#2E7D32] px-3 py-1 bg-[#2E7D32]/[0.06] inline-block mb-4"
-                style={{ fontWeight: 600 }}
-              >
-                {filters.find((f) => f.key === selectedProject.category)?.label}
-              </span>
-              <h2
-                className="text-[#1a1a1a] mb-6"
-                style={{
-                  fontFamily: "Inter, sans-serif",
-                  fontSize: "clamp(22px, 3vw, 32px)",
-                  fontWeight: 700,
-                  lineHeight: 1.2,
-                  letterSpacing: "-0.01em",
-                }}
-              >
-                {selectedProject.title}
-              </h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-                {selectedProject.desc ? (
-                  <div>
-                    <h4
-                      className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-3"
-                      style={{ fontWeight: 600 }}
-                    >
-                      {t("description")}
-                    </h4>
-                    <p
-                      className="text-[#555] text-[14px] leading-[1.8]"
-                      style={{ fontWeight: 400 }}
-                    >
-                      {selectedProject.desc}
-                    </p>
-                  </div>
-                ) : null}
-                {selectedProject.task ? (
-                  <div>
-                    <h4
-                      className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-3"
-                      style={{ fontWeight: 600 }}
-                    >
-                      {t("task")}
-                    </h4>
-                    <p
-                      className="text-[#555] text-[14px] leading-[1.8]"
-                      style={{ fontWeight: 400 }}
-                    >
-                      {selectedProject.task}
-                    </p>
-                  </div>
-                ) : null}
-                {selectedProject.solution ? (
-                  <div>
-                    <h4
-                      className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-3"
-                      style={{ fontWeight: 600 }}
-                    >
-                      {t("solution")}
-                    </h4>
-                    <p
-                      className="text-[#555] text-[14px] leading-[1.8]"
-                      style={{ fontWeight: 400 }}
-                    >
-                      {selectedProject.solution?.title}
-                    </p>
-                    {selectedProject.solution?.items ? (
-                      <div className="mt-2">
-                        {selectedProject.solution?.items?.map((item, idx) => (
-                          <div className="ml-2 text-[#555] text-[14px]" key={idx}>
-                            — {item}
-                          </div>
-                        ))}
-                      </div>
-                    ) : null}
-                  </div>
-                ) : null}
-                {selectedProject.result ? (
-                  <div>
-                    <h4
-                      className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-3"
-                      style={{ fontWeight: 600 }}
-                    >
-                      {t("results")}
-                    </h4>
-                    <p
-                      className="text-[#2E7D32] text-[14px] leading-[1.8]"
-                      style={{ fontWeight: 600 }}
-                    >
-                      {selectedProject.result}
-                    </p>
-                  </div>
-                ) : null}
-              </div>
-
-              {/* Photo placeholder */}
-              <div className="mt-10 h-[200px] bg-[#f5f5f5] border border-dashed border-black/[0.08] flex items-center justify-center">
-                <img
-                  src={selectedProject.photo}
-                  className="h-full w-full object-cover"
-                  alt=""
-                />
-                {/* <div className="text-center">
-                  <ExternalLink
-                    size={20}
-                    className="text-[#ccc] mx-auto mb-2"
-                  />
-                  <span
-                    className="text-[11px] text-[#bbb] tracking-[0.1em] uppercase"
-                    style={{ fontWeight: 500 }}
-                  >
-                    Скриншоты проекта
-                  </span>
-                </div> */}
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      )}
     </div>
   );
 }

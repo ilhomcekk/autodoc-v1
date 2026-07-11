@@ -242,7 +242,7 @@ export function CareerPage() {
       </section>
 
       {/* ========== SECTION 2 — ПОЧЕМУ AUTODOC ========== */}
-      <section className="py-16 sm:py-24 lg:py-36 bg-white">
+      <section className="py-16 sm:py-24 lg:py-36">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <AnimatedSection>
             <span
@@ -487,7 +487,7 @@ export function CareerPage() {
       </AnimatePresence>
 
       {/* ========== SECTION 4 — КОМАНДА ========== */}
-      <section className="py-16 sm:py-24 lg:py-36 bg-white overflow-hidden">
+      <section className="py-16 sm:py-24 lg:py-36 overflow-hidden">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <AnimatedSection>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
@@ -582,7 +582,7 @@ export function CareerPage() {
       </section>
 
       {/* ========== SECTION 6 — ФОРМА ========== */}
-      <section id="resume-form" className="py-16 sm:py-24 lg:py-36 bg-white">
+      <section id="resume-form" className="py-16 sm:py-24 lg:py-36">
         <div className="max-w-[680px] mx-auto px-6 lg:px-12">
           <AnimatedSection>
             <span

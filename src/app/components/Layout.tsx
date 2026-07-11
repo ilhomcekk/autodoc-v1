@@ -11,7 +11,10 @@ export function Layout() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ fontFamily: 'Inter, sans-serif' }}>
+    <div
+      className="min-h-screen flex flex-col"
+      style={{ fontFamily: "Inter, sans-serif" }}
+    >
       <Header />
       <main className="flex-1">
         <Outlet />

@@ -121,13 +121,13 @@ export function AboutPage() {
       bio: "Управляет финансовой стратегией холдинга, инвестиционными процессами и экономической эффективностью проектов. Обеспечивает финансовую устойчивость компании.",
       photo: images.Management4,
     },
-    {
-      id: 5,
-      name: "Qobulov Zafar",
-      position: t("chiefFinancialOfficer"),
-      bio: "",
-      photo: images.Management5,
-    },
+    // {
+    //   id: 5,
+    //   name: "Qobulov Zafar",
+    //   position: t("chiefFinancialOfficer"),
+    //   bio: "",
+    //   photo: images.Management5,
+    // },
   ];
   const [selectedLeader, setSelectedLeader] = useState<
     (typeof leadership)[0] | null
@@ -250,7 +250,7 @@ export function AboutPage() {
       {/* ========== SECTION 2 — ИСТОРИЯ ========== */}
       <section
         id="history"
-        className="py-16 sm:py-24 lg:py-40 bg-white overflow-hidden"
+        className="py-16 sm:py-24 lg:py-40 overflow-hidden"
       >
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <AnimatedSection>

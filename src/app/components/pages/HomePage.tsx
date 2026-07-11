@@ -6,8 +6,10 @@ import { ImageWithFallback } from "../figma/ImageWithFallback";
 import images from "../../../assets/images";
 import { useTranslation } from "react-i18next";
 
-const HERO_IMG =
-  "https://images.unsplash.com/photo-1747499967281-c0c5eec9933c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbWFydCUyMGNpdHklMjBhZXJpYWwlMjB2aWV3JTIwbmlnaHR8ZW58MXx8fHwxNzczMzgwMDY3fDA&ixlib=rb-4.1.0&q=80&w=1080";
+// const HERO_IMG =
+//   "https://images.unsplash.com/photo-1747499967281-c0c5eec9933c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbWFydCUyMGNpdHklMjBhZXJpYWwlMjB2aWV3JTIwbmlnaHR8ZW58MXx8fHwxNzczMzgwMDY3fDA&ixlib=rb-4.1.0&q=80&w=1080";
+
+const HERO_IMG = images.Hero;
 const TASHKENT_IMG =
   "https://images.unsplash.com/photo-1743412009452-331949b60907?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxVemJla2lzdGFuJTIwVGFzaGtlbnQlMjBjaXR5c2NhcGUlMjBtb2Rlcm58ZW58MXx8fHwxNzczMzgwMDcxfDA&ixlib=rb-4.1.0&q=80&w=1080";
 
@@ -50,7 +52,7 @@ export function HomePage() {
     images.UzTelecom,
     images.CyberPark,
     images.ASBT,
-  ]
+  ];
   const videos = {
     uz: images.AnonsUzVideo,
     ru: images.AnonsRuVideo,
@@ -302,7 +304,7 @@ export function HomePage() {
       )}
 
       {/* ========== SECTION 2 — О ХОЛДИНГЕ ========== */}
-      <section className="py-16 sm:py-24 lg:py-40 bg-white">
+      <section className="py-16 sm:py-24 lg:py-40">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-20">
             {/* Left Column - Label */}
@@ -407,7 +409,7 @@ export function HomePage() {
       </section>
 
       {/* ========== SECTION 4 — НАПРАВЛЕНИЯ ДЕЯТЕЛЬНОСТИ ========== */}
-      <section className="py-16 sm:py-24 lg:py-40 bg-white">
+      <section className="py-16 sm:py-24 lg:py-40">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <AnimatedSection>
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 lg:mb-24 gap-4">

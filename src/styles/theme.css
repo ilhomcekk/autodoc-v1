@@ -183,4 +183,9 @@
     filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(7467%)
       hue-rotate(232deg) brightness(108%) contrast(108%);
   }
+  body {
+    background-image: url(../assets/images/dots.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
